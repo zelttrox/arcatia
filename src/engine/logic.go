@@ -40,16 +40,22 @@ func (e *Engine) InGameLogic() {
 	// Mouvement
 	if rl.IsKeyDown(rl.KeyW) || rl.IsKeyDown(rl.KeyUp) {
 		e.Player.Position.Y -= e.Player.Speed
+		e.Player.Sprite = rl.LoadTexture("textures/entities/soldier/Soldier-Walk.png")
+		e.Player.Sprite = rl.LoadTexture("textures/entities/soldier/Soldier-Idle.png")
 	}
 	if rl.IsKeyDown(rl.KeyS) || rl.IsKeyDown(rl.KeyDown) {
 		e.Player.Position.Y += e.Player.Speed
+		e.Player.Sprite = rl.LoadTexture("textures/entities/soldier/Soldier-Walk.png")
 	}
 	if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
 		e.Player.Position.X -= e.Player.Speed
+		e.Player.Sprite = rl.LoadTexture("textures/entities/soldier/Soldier-Walk.png")
 	}
 	if rl.IsKeyDown(rl.KeyD) || rl.IsKeyDown(rl.KeyRight) {
 		e.Player.Position.X += e.Player.Speed
+		e.Player.Sprite = rl.LoadTexture("textures/entities/soldier/Soldier-Walk.png")
 	}
+	
 
 	// Camera
 	e.Camera.Target = rl.Vector2{X: e.Player.Position.X + 70, Y: e.Player.Position.Y + 70}
