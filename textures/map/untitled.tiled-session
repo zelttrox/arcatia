@@ -1,0 +1,61 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "tilesets/TX Plant.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/map.json": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 481.3333333333333,
+                "y": 296.66666666666663
+            }
+        },
+        "tilesets/map.json#Grass": {
+            "scaleInDock": 1
+        },
+        "tilesets/map.json#TX Plant": {
+            "scaleInDock": 1
+        },
+        "tilesets/map.json#TX Shadow Plant": {
+            "scaleInDock": 1
+        },
+        "untitled.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 386,
+                "y": 106.33333333333331
+            }
+        },
+        "untitled.tmx#Grass": {
+            "scaleInDock": 1.5
+        },
+        "untitled.tmx#TX Plant": {
+            "scaleInDock": 1.5
+        },
+        "untitled.tmx#TX Shadow Plant": {
+            "scaleInDock": 1
+        }
+    },
+    "last.exportedFilePath": "/home/oue/Desktop/arcadia/textures/map/tilesets",
+    "last.imagePath": "/home/oue/Desktop/arcadia/textures/map/tilesets",
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+    ],
+    "project": "untitled.tiled-project",
+    "recentFiles": [
+        "tilesets/TX Plant.tsx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.lastUsedFormat": "tsx"
+}
