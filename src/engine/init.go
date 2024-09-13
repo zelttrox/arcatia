@@ -33,7 +33,8 @@ func (e *Engine) InitEntities() {
 		Position:  rl.Vector2{X: 300, Y: 300},
 		Health:    100,
 		Money:     1000,
-		Speed:     2,
+		Damage:    5,
+		Speed:     4,
 		Inventory: []item.Item{},
 
 		IsAlive: true,
@@ -49,8 +50,8 @@ func (e *Engine) InitEntities() {
 		Loot:     []item.Item{},
 		Worth:    12,
 
-		IsAlive:  true,
-		Sprite:   rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
+		IsAlive: true,
+		Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
 	})
 
 	e.Player.Money = 12

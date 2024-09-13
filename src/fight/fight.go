@@ -1,6 +1,7 @@
 package fight
 
 import (
+	"fmt"
 	"main/src/entity"
 )
 
@@ -26,5 +27,7 @@ func Fight(player entity.Player, monster entity.Monster) {
 
 		player.Attack(&monster)
 		monster.Attack(&player)
+		fmt.Println(player.Health)
+		fmt.Println(monster.Health)
 	}
 }
