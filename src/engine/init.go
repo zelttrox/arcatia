@@ -52,6 +52,12 @@ func (e *Engine) InitEntities() {
 
 		IsAlive: true,
 		Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
+
+		IsAnimated:   true,
+		FrameWidth:   100,
+		FrameHeight:  100,
+		MaxFrames:    6,
+		FrameCounter: 0,
 	})
 
 	e.Player.Money = 12
