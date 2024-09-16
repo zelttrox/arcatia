@@ -27,6 +27,17 @@ func (e *Engine) HomeLogic() {
 		e.IsRunning = false
 	}
 }
+func (e *Engine) GameOverLogic() {
+
+	//Menus
+	if rl.IsKeyPressed(rl.KeyEnter) {
+		e.StateMenu = PLAY
+		e.StateEngine = INGAME
+	}
+	if rl.IsKeyPressed(rl.KeyEscape) {
+		e.IsRunning = false
+	}
+}
 
 func (e *Engine) SettingsLogic() {
 	//Menus

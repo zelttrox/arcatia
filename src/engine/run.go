@@ -31,6 +31,7 @@ func (engine *Engine) Run() {
 
 			case GAMEOVER:
 				engine.GameOverRendering()
+				engine.GameOverLogic()
 			}
 		}
 
