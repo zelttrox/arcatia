@@ -5,11 +5,11 @@ import (
 	"main/src/engine"
 	"net/http"
 	_ "net/http/pprof"
+
 )
 
 func main() {
 	var e engine.Engine
-
 	e.Init()
 	e.Load()
 	go func() {

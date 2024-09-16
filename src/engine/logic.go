@@ -28,9 +28,15 @@ func (e *Engine) HomeLogic() {
 	}
 }
 func (e *Engine) GameOverLogic() {
-
-	//Menus
 	if rl.IsKeyPressed(rl.KeyEnter) {
+		e.Player.Health = 100
+		e.Player.Money = 300
+		e.Player.IsAlive = true
+		e.Player.Position = rl.Vector2{X: 300, Y: 300}
+		for i := range e.Monsters {
+			monster := &e.Monsters[i]
+			monster.IsAlive = true
+		}
 		e.StateMenu = PLAY
 		e.StateEngine = INGAME
 	}
