@@ -20,9 +20,9 @@ type Monster struct {
 	Sprite rl.Texture2D
 
 	IsAnimated  bool
-    FrameWidth  int
-    FrameHeight int
-    MaxFrames   int
+	FrameWidth  int
+	FrameHeight int
+	MaxFrames   int
 }
 
 func (m *Monster) Attack(p *Player) {
@@ -36,21 +36,20 @@ func (m *Monster) ToString() {
 var CurrentFrame int
 
 func (m Monster) UpdateAnimation() {
-    CurrentFrame++
-    if CurrentFrame >= m.MaxFrames {
-        CurrentFrame = 0
-    }
-    fmt.Println("frame: ", CurrentFrame, " / ", 6)
+	CurrentFrame++
+	if CurrentFrame >= m.MaxFrames {
+		CurrentFrame = 0
+	}
 }
 
 func (m *Monster) Draw() {
-    frameRec := rl.Rectangle{
-        X: float32(m.FrameWidth + m.FrameWidth*CurrentFrame), Y: 0,
-        Width: float32(m.FrameWidth), Height: float32(m.FrameHeight),
-    }
-    position := rl.Rectangle{
-        X: m.Position.X, Y: m.Position.Y,
-        Width: float32(m.FrameWidth), Height: float32(m.FrameHeight),
-    }
-    rl.DrawTexturePro(m.Sprite, frameRec, position, rl.Vector2{}, 0, rl.White)
+	frameRec := rl.Rectangle{
+		X: float32(m.FrameWidth + m.FrameWidth*CurrentFrame), Y: 0,
+		Width: float32(m.FrameWidth), Height: float32(m.FrameHeight),
+	}
+	position := rl.Rectangle{
+		X: m.Position.X, Y: m.Position.Y,
+		Width: float32(m.FrameWidth), Height: float32(m.FrameHeight),
+	}
+	rl.DrawTexturePro(m.Sprite, frameRec, position, rl.Vector2{}, 0, rl.White)
 }

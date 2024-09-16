@@ -1,6 +1,7 @@
 package fight
 
 import (
+	"fmt"
 	"main/src/entity"
 	//rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -28,5 +29,6 @@ func Fight(player *entity.Player, monster *entity.Monster) {
 		}
 		player.Attack(monster)
 		monster.Attack(player)
+		fmt.Println(player.Health)
 	}
 }

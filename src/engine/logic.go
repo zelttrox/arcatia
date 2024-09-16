@@ -36,6 +36,7 @@ func (e *Engine) GameOverLogic() {
 		for i := range e.Monsters {
 			monster := &e.Monsters[i]
 			monster.IsAlive = true
+			monster.Health = 20
 		}
 		e.StateMenu = PLAY
 		e.StateEngine = INGAME
