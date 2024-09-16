@@ -78,20 +78,19 @@ func (e *Engine) CheckCollisions() {
 
 func (e *Engine) MonsterCollisions() {
 
-	for _, monster := range e.Monsters {
+	for i := range e.Monsters {
+		monster := &e.Monsters[i]
 		if monster.Position.X > e.Player.Position.X-20 &&
 			monster.Position.X < e.Player.Position.X+20 &&
 			monster.Position.Y > e.Player.Position.Y-20 &&
 			monster.Position.Y < e.Player.Position.Y+20 {
 
-			if monster.Name == "claude" {
-				e.NormalTalk(monster, "Bonjour")
+			if monster.Name == "claude" && monster.IsAlive {
+				e.NormalTalk(*monster, "Bonjour")
 				if rl.IsKeyPressed(rl.KeyE) {
-					fight.Fight(e.Player, e.Monsters[0])
+					fight.Fight(&e.Player, monster)
 				}
 			}
-		} else {
-			//...
 		}
 	}
 }

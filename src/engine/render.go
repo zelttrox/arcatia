@@ -2,6 +2,7 @@ package engine
 
 import (
 	"main/src/entity"
+	"strconv"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -32,9 +33,9 @@ func (e *Engine) InGameRendering() {
 	rl.EndMode2D() // On finit le rendu camera
 
 	// Ecriture fixe (car pas affectée par le mode camera)
-	rl.DrawText("Playing", int32(rl.GetScreenWidth())/2-rl.MeasureText("Playing", 40)/2, int32(rl.GetScreenHeight())/2-350, 40, rl.RayWhite)
-	rl.DrawText("[P] or [Esc] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("[P] or [Esc] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-300, 20, rl.RayWhite)
-
+	rl.DrawText("[P] or [Esc] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("[P] or [Esc] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-350, 20, rl.RayWhite)
+	rl.DrawText("MONEY : "+strconv.Itoa(e.Player.Money), int32(rl.GetScreenWidth()/2-650), int32(rl.GetScreenHeight())/2-300, 40, rl.RayWhite)
+	rl.DrawText("PV : "+strconv.Itoa(e.Player.Health), int32(rl.GetScreenWidth()/2-650), int32(rl.GetScreenHeight())/2-250, 40, rl.RayWhite)
 }
 
 func (e *Engine) PauseRendering() {
@@ -44,7 +45,7 @@ func (e *Engine) PauseRendering() {
 	rl.DrawText("[P] or [Esc] to resume", int32(rl.GetScreenWidth())/2-rl.MeasureText("[P] or [Esc] to resume", 20)/2, int32(rl.GetScreenHeight())/2, 20, rl.RayWhite)
 	rl.DrawText("[Q]/[A] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
 
-	rl.EndDrawing()
+	//rl.EndDrawing()
 }
 
 func (e *Engine) RenderPlayer() {
@@ -57,29 +58,28 @@ func (e *Engine) RenderPlayer() {
 		0,
 		rl.White,
 	)
-
 }
 
 func (e *Engine) RenderMonsters() {
 	for _, monster := range e.Monsters {
-		rl.DrawTexturePro(
-			monster.Sprite,
-			rl.NewRectangle(0, 0, 100, 100),
-			rl.NewRectangle(monster.Position.X, monster.Position.Y, 150, 150),
-			rl.Vector2{X: 0, Y: 0},
-			0,
-			rl.White,
-		)
+		if monster.IsAlive {
+			monster.UpdateAnimation()
+			monster.Draw()
+		}
 	}
 }
 
 func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
 	rl.BeginMode2D(e.Camera)
 
+	dialogBoxColor := rl.NewColor(200, 200, 185, 150)
+
+	rl.DrawRectangle(450, 300, 200, 50, dialogBoxColor)
+
 	rl.DrawText(
 		sentence,
-		int32(m.Position.X),
-		int32(m.Position.Y)+50,
+		int32(450),
+		int32(300),
 		10,
 		rl.RayWhite,
 	)
