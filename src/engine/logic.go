@@ -107,7 +107,10 @@ func (e *Engine) MonsterCollisions() {
 
 			if monster.Name == "claude" && monster.IsAlive {
 				e.NormalTalk(*monster, "Bonjour")
-				if rl.IsKeyPressed(rl.KeyE) {
+				if rl.IsKeyPressed(rl.KeyE) || (monster.Position.X > e.Player.Position.X-20 &&
+					monster.Position.X < e.Player.Position.X+20 &&
+					monster.Position.Y > e.Player.Position.Y-20 &&
+					monster.Position.Y < e.Player.Position.Y+20) {
 					fight.Fight(&e.Player, monster)
 					if e.Player.IsAlive == false {
 						e.StateEngine = GAMEOVER
