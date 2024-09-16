@@ -29,6 +29,8 @@ func (e *Engine) InGameRendering() {
 	e.RenderMonsters()
 	e.RenderPlayer()
 
+	e.RenderHealth()
+
 	rl.EndMode2D() // On finit le rendu camera
 
 	// Ecriture fixe (car pas affectée par le mode camera)
