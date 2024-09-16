@@ -19,6 +19,14 @@ func (e *Engine) HomeRendering() {
 	rl.DrawText("[Esc] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
 
 }
+func (e *Engine) GameOverRendering() {
+	rl.ClearBackground(rl.Black)
+
+	rl.DrawText("GAME OVER", int32(rl.GetScreenWidth())/2-rl.MeasureText("Home Menu", 40)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
+	rl.DrawText("[Enter] to replay", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Enter] to Play", 20)/2, int32(rl.GetScreenHeight())/2, 20, rl.RayWhite)
+	rl.DrawText("[Esc] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
+
+}
 
 func (e *Engine) InGameRendering() {
 	rl.ClearBackground(rl.Gray)

@@ -89,6 +89,9 @@ func (e *Engine) MonsterCollisions() {
 				e.NormalTalk(*monster, "Bonjour")
 				if rl.IsKeyPressed(rl.KeyE) {
 					fight.Fight(&e.Player, monster)
+					if e.Player.IsAlive == false {
+						e.StateEngine = GAMEOVER
+					}
 				}
 			}
 		}
