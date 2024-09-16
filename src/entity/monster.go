@@ -8,14 +8,15 @@ import (
 )
 
 type Monster struct {
-	Name     string
-	Position rl.Vector2
-	Health   int
-	Damage   int
-	Loot     []item.Item
-	Worth    int //valeur en argent quand tué
-	Speed    int
-	Origine  rl.Vector2
+	Name      string
+	Position  rl.Vector2
+	Health    int
+	MaxHealth int
+	Damage    int
+	Loot      []item.Item
+	Worth     int //valeur en argent quand tué
+	Speed     int
+	Origine   rl.Vector2
 
 	IsAlive bool
 
@@ -36,9 +37,16 @@ func (m *Monster) ToString() {
 }
 
 var CurrentFrame int
+var frameCount int
+var speed int = 5
 
 func (m Monster) UpdateAnimation() {
-	CurrentFrame++
+	if frameCount >= speed {
+		CurrentFrame++
+		frameCount = 0
+	} else {
+		frameCount++
+	}
 	if CurrentFrame >= m.MaxFrames {
 		CurrentFrame = 0
 	}

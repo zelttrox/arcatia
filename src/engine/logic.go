@@ -97,23 +97,28 @@ func (e *Engine) CheckCollisions() {
 }
 
 func (e *Engine) MonsterCollisions() {
-
 	for i := range e.Monsters {
 		monster := &e.Monsters[i]
-		if monster.Position.X > e.Player.Position.X-20 &&
-			monster.Position.X < e.Player.Position.X+20 &&
-			monster.Position.Y > e.Player.Position.Y-20 &&
-			monster.Position.Y < e.Player.Position.Y+20 {
+		if monster.Position.X > e.Player.Position.X-200 &&
+			monster.Position.X < e.Player.Position.X+200 &&
+			monster.Position.Y > e.Player.Position.Y-200 &&
+			monster.Position.Y < e.Player.Position.Y+200 {
 
 			if monster.Name == "claude" && monster.IsAlive {
 				e.NormalTalk(*monster, "Bonjour")
-				if rl.IsKeyPressed(rl.KeyE) || (monster.Position.X > e.Player.Position.X-20 &&
+				if monster.Position.X > e.Player.Position.X-20 &&
 					monster.Position.X < e.Player.Position.X+20 &&
 					monster.Position.Y > e.Player.Position.Y-20 &&
-					monster.Position.Y < e.Player.Position.Y+20) {
-					fight.Fight(&e.Player, monster)
+					monster.Position.Y < e.Player.Position.Y+20 {
+					fight.Fightm(&e.Player, monster)
 					if e.Player.IsAlive == false {
 						e.StateEngine = GAMEOVER
+					}
+					if rl.IsKeyPressed(rl.KeyE) && monster.Position.X > e.Player.Position.X-40 &&
+						monster.Position.X < e.Player.Position.X+40 &&
+						monster.Position.Y > e.Player.Position.Y-40 &&
+						monster.Position.Y < e.Player.Position.Y+40 {
+						fight.Fightp(&e.Player, monster)
 					}
 				}
 			}

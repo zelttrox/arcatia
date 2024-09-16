@@ -13,22 +13,27 @@ const (
 	MONSTER_TURN fight = iota
 )
 
-func Fight(player *entity.Player, monster *entity.Monster) {
+var cmt int = 0
 
-	for { // Boucle infinie
-		// Check si le joueur ou le monstre est vaincu. Si c'est le cas, on sort de la boucle
-
-		if player.Health <= 0 {
-			player.IsAlive = false
-			break
-		} else if monster.Health <= 0 {
-			player.Inventory = append(player.Inventory, monster.Loot...)
-			player.Money += monster.Worth
-			monster.IsAlive = false
-			break
-		}
-		player.Attack(monster)
+func Fightm(player *entity.Player, monster *entity.Monster) {
+	cmt++
+	if cmt%60 == 0 {
 		monster.Attack(player)
 		fmt.Println(player.Health)
+		cmt = 0
 	}
+	if player.Health <= 0 {
+		player.IsAlive = false
+	}
+}
+
+func Fightp(player *entity.Player, monster *entity.Monster) {
+	player.Attack(monster)
+	fmt.Println(monster.Health)
+	if monster.Health <= 0 {
+		player.Inventory = append(player.Inventory, monster.Loot...)
+		player.Money += monster.Worth
+		monster.IsAlive = false
+	}
+
 }
