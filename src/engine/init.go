@@ -48,6 +48,8 @@ func (e *Engine) InitEntities() {
 		Damage:   100,
 		Loot:     []item.Item{},
 		Worth:    12,
+		Speed:    3,
+		Origine:  rl.Vector2{X: 400, Y: 320},
 
 		IsAlive: true,
 		Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
@@ -64,6 +66,8 @@ func (e *Engine) InitEntities() {
 		Damage:   5,
 		Loot:     []item.Item{},
 		Worth:    12,
+		Speed:    3,
+		Origine:  rl.Vector2{X: 500, Y: 320},
 
 		IsAlive: true,
 		Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),

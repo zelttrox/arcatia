@@ -1,8 +1,10 @@
 package engine
 
 import (
+	"fmt"
 	"main/src/entity"
 	"main/src/fight"
+	"math"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -37,6 +39,7 @@ func (e *Engine) GameOverLogic() {
 			monster := &e.Monsters[i]
 			monster.IsAlive = true
 			monster.Health = 20
+			monster.Position = monster.Origine
 		}
 		e.StateMenu = PLAY
 		e.StateEngine = INGAME
@@ -90,7 +93,7 @@ func (e *Engine) InGameLogic() {
 }
 
 func (e *Engine) CheckCollisions() {
-
+	e.ChasePlayer()
 	e.MonsterCollisions()
 }
 
@@ -132,4 +135,18 @@ func (e *Engine) PauseLogic() {
 
 	//Musique
 	rl.UpdateMusicStream(e.Music)
+}
+
+func (e *Engine) ChasePlayer() {
+
+	for i := range e.Monsters {
+		monster := &e.Monsters[i]
+		distrel := math.Sqrt(math.Pow(float64(e.Player.Position.X)-float64(monster.Position.X), 2) + math.Pow(float64(e.Player.Position.Y)-float64(monster.Position.Y), 2))
+		if distrel <= 200 && distrel > 0 {
+			xrel := float64(e.Player.Position.X-monster.Position.X) / distrel
+			yrel := float64(e.Player.Position.Y-monster.Position.Y) / distrel
+			monster.Position.X += float32(float64(xrel) * float64(monster.Speed))
+			monster.Position.Y += float32(float64(yrel) * float64(monster.Speed))
+		}
+	}
 }
