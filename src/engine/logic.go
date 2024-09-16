@@ -1,7 +1,6 @@
 package engine
 
 import (
-	"fmt"
 	"main/src/entity"
 	"main/src/fight"
 	"math"
