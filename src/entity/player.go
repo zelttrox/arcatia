@@ -16,8 +16,13 @@ type Player struct {
 	Inventory []item.Item
 
 	IsAlive bool
+	IsRunning bool
 
-	Sprite rl.Texture2D
+	Sprite      rl.Texture2D
+	IsAnimated  bool
+	FrameWidth  int
+	FrameHeight int
+	MaxFrames   int
 }
 
 func (p *Player) Attack(m *Monster) {
@@ -32,4 +37,34 @@ func (p *Player) ToString() {
 		Inventaire: %+v
 	
 	\n`, p.Health, p.Money, p.Inventory)
+}
+
+var playerCurrentFrame int
+var playerFrameCount int
+var playerAnimationSpeed int = 5
+
+func (p *Player) UpdateAnimation() {
+	if playerFrameCount >= playerAnimationSpeed {
+		playerCurrentFrame++
+		playerFrameCount = 0
+	} else {
+		playerFrameCount++
+	}
+	if playerCurrentFrame >= p.MaxFrames {
+		playerCurrentFrame = 0
+	}
+}
+
+func (p *Player) Draw() {
+	frameRec := rl.Rectangle{
+		X: float32(p.FrameWidth * playerCurrentFrame), Y: 0,
+		Width:  float32(p.FrameWidth),
+		Height: float32(p.FrameHeight),
+	}
+	position := rl.Rectangle{
+		X: p.Position.X, Y: p.Position.Y,
+		Width:  float32(p.FrameWidth),
+		Height: float32(p.FrameHeight),
+	}
+	rl.DrawTexturePro(p.Sprite, frameRec, position, rl.Vector2{}, 0, rl.White)
 }

@@ -41,15 +41,19 @@ func (e *Engine) InGameLogic() {
 	// Mouvement
 	if rl.IsKeyDown(rl.KeyW) || rl.IsKeyDown(rl.KeyUp) {
 		e.Player.Position.Y -= e.Player.Speed
+		e.Player.IsRunning = true
 	}
 	if rl.IsKeyDown(rl.KeyS) || rl.IsKeyDown(rl.KeyDown) {
 		e.Player.Position.Y += e.Player.Speed
+		e.Player.IsRunning = true
 	}
 	if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
 		e.Player.Position.X -= e.Player.Speed
+		e.Player.IsRunning = true
 	}
 	if rl.IsKeyDown(rl.KeyD) || rl.IsKeyDown(rl.KeyRight) {
 		e.Player.Position.X += e.Player.Speed
+		e.Player.IsRunning = true
 	}
 
 	// Camera
@@ -78,6 +82,7 @@ func (e *Engine) CheckCollisions() {
 
 func (e *Engine) MonsterCollisions() {
 
+<<<<<<< Updated upstream
 	for _, monster := range e.Monsters {
 		if monster.Position.X > e.Player.Position.X-20 &&
 			monster.Position.X < e.Player.Position.X+20 &&
@@ -88,6 +93,24 @@ func (e *Engine) MonsterCollisions() {
 				e.NormalTalk(monster, "Bonjour")
 				if rl.IsKeyPressed(rl.KeyE) {
 					fight.Fight(e.Player, e.Monsters[0])
+=======
+			if monster.Name == "claude" && monster.IsAlive {
+				e.NormalTalk(*monster, "Bonjour")
+				if monster.Position.X > e.Player.Position.X-20 &&
+					monster.Position.X < e.Player.Position.X+20 &&
+					monster.Position.Y > e.Player.Position.Y-20 &&
+					monster.Position.Y < e.Player.Position.Y+20 {
+					fight.Fightm(&e.Player, monster)
+					if !e.Player.IsAlive {
+						e.StateEngine = GAMEOVER
+					}
+					if rl.IsKeyPressed(rl.KeyE) && monster.Position.X > e.Player.Position.X-40 &&
+						monster.Position.X < e.Player.Position.X+40 &&
+						monster.Position.Y > e.Player.Position.Y-40 &&
+						monster.Position.Y < e.Player.Position.Y+40 {
+						fight.Fightp(&e.Player, monster)
+					}
+>>>>>>> Stashed changes
 				}
 			}
 		} else {

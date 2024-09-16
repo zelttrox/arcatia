@@ -27,7 +27,14 @@ func (e *Engine) InGameRendering() {
 	e.RenderMap()
 
 	e.RenderMonsters()
+<<<<<<< Updated upstream
 	e.RenderPlayer()
+=======
+
+	if e.Player.IsRunning {
+		e.RenderPlayer()
+	}
+>>>>>>> Stashed changes
 
 	e.RenderHealth()
 
@@ -48,6 +55,7 @@ func (e *Engine) PauseRendering() {
 }
 
 func (e *Engine) RenderPlayer() {
+<<<<<<< Updated upstream
 
 	rl.DrawTexturePro(
 		e.Player.Sprite,
@@ -58,6 +66,10 @@ func (e *Engine) RenderPlayer() {
 		rl.White,
 	)
 
+=======
+	e.Player.UpdateAnimation()
+	e.Player.Draw()
+>>>>>>> Stashed changes
 }
 
 func (e *Engine) RenderMonsters() {
