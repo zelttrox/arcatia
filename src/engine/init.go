@@ -61,13 +61,13 @@ func (e *Engine) InitEntities() {
 	})
 	e.Monsters = append(e.Monsters, entity.Monster{
 		Name:     "claude",
-		Position: rl.Vector2{X: 500, Y: 320},
+		Position: rl.Vector2{X: 500, Y: 600},
 		Health:   20,
 		Damage:   5,
 		Loot:     []item.Item{},
 		Worth:    12,
-		Speed:    3,
-		Origine:  rl.Vector2{X: 500, Y: 320},
+		Speed:    10,
+		Origine:  rl.Vector2{X: 500, Y: 600},
 
 		IsAlive: true,
 		Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
