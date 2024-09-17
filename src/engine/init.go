@@ -13,7 +13,7 @@ const (
 )
 
 func (e *Engine) Init() {
-	rl.InitWindow(ScreenWidth, ScreenHeight, "Arcadia")
+	rl.InitWindow(ScreenWidth, ScreenHeight, "Meow, Meow, Meow Meow")
 
 	// Initialisation des variables de l'engine
 	e.IsRunning = true
@@ -41,12 +41,12 @@ func (e *Engine) InitEntities() {
 		IsRunning: false,
 
 		IsAnimated:  true,
-		FrameWidth:  100,
-		FrameHeight: 100,
-		MaxFrames:   8,
+		FrameWidth:  32,
+		FrameHeight: 32,
+		MaxFrames:   10,
 
-		SpriteIdle: rl.LoadTexture("textures/entities/soldier/Soldier-Idle.png"),
-		SpriteRun:  rl.LoadTexture("textures/entities/soldier/Soldier-Walk.png"),
+		SpriteIdle: rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet.png"),
+		SpriteRun:  []rl.Texture2D{rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Right.png"), rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Left.png")},
 	}
 	e.Monsters = append(e.Monsters, entity.Monster{
 		Name:      "claude",

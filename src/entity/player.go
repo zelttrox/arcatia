@@ -17,6 +17,7 @@ type Player struct {
 
 	IsAlive   bool
 	IsRunning bool
+	Dir int
 
 	IsAnimated  bool
 	FrameWidth  int
@@ -24,7 +25,7 @@ type Player struct {
 	MaxFrames   int
 
 	SpriteIdle rl.Texture2D
-	SpriteRun  rl.Texture2D
+	SpriteRun  []rl.Texture2D
 }
 
 func (p *Player) Attack(m *Monster) {
@@ -70,5 +71,5 @@ func (p *Player) PlayerDraw() {
 		X: p.Position.X + 20, Y: p.Position.Y + 10,
 		Width: float32(p.FrameWidth), Height: float32(p.FrameHeight),
 	}
-	rl.DrawTexturePro(p.SpriteRun, frameRec, position, rl.Vector2{}, 0, rl.White)
+	rl.DrawTexturePro(p.SpriteRun[p.Dir], frameRec, position, rl.Vector2{}, 0, rl.White)
 }
