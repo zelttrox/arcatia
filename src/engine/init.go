@@ -37,9 +37,16 @@ func (e *Engine) InitEntities() {
 		Speed:     4,
 		Inventory: []item.Item{},
 
-		IsAlive: true,
+		IsAlive:   true,
+		IsRunning: false,
 
-		Sprite: e.Player.Sprite,
+		IsAnimated:  true,
+		FrameWidth:  100,
+		FrameHeight: 100,
+		MaxFrames:   8,
+
+		SpriteIdle: rl.LoadTexture("textures/entities/soldier/Soldier-Idle.png"),
+		SpriteRun:  rl.LoadTexture("textures/entities/soldier/Soldier-Walk.png"),
 	}
 	e.Monsters = append(e.Monsters, entity.Monster{
 		Name:      "claude",

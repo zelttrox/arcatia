@@ -58,20 +58,24 @@ func (e *Engine) SettingsLogic() {
 }
 
 func (e *Engine) InGameLogic() {
+
+	e.Player.IsRunning = false
 	// Mouvement
 	if rl.IsKeyDown(rl.KeyW) || rl.IsKeyDown(rl.KeyUp) {
 		e.Player.Position.Y -= e.Player.Speed
+		e.Player.IsRunning = true
 	}
 	if rl.IsKeyDown(rl.KeyS) || rl.IsKeyDown(rl.KeyDown) {
 		e.Player.Position.Y += e.Player.Speed
+		e.Player.IsRunning = true
 	}
 	if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
 		e.Player.Position.X -= e.Player.Speed
-		e.Player.Sprite = rl.LoadTexture("textures/entities/soldier/Soldier-Idle-Reverse.png")
+		e.Player.IsRunning = true
 	}
 	if rl.IsKeyDown(rl.KeyD) || rl.IsKeyDown(rl.KeyRight) {
 		e.Player.Position.X += e.Player.Speed
-		e.Player.Sprite = rl.LoadTexture("textures/entities/soldier/Soldier-Idle.png")
+		e.Player.IsRunning = true
 	}
 
 	// Camera
@@ -101,28 +105,25 @@ func (e *Engine) CheckCollisions() {
 func (e *Engine) MonsterCollisions() {
 	for i := range e.Monsters {
 		monster := &e.Monsters[i]
-		if monster.Position.X > e.Player.Position.X-200 &&
-			monster.Position.X < e.Player.Position.X+200 &&
-			monster.Position.Y > e.Player.Position.Y-200 &&
-			monster.Position.Y < e.Player.Position.Y+200 {
+		if monster.Name == "claude" && monster.IsAlive {
+			if monster.Position.X > e.Player.Position.X-60 &&
+				monster.Position.X < e.Player.Position.X+600 &&
+				monster.Position.Y > e.Player.Position.Y-600 &&
+				monster.Position.Y < e.Player.Position.Y+600 {
+				if rl.IsKeyPressed(rl.KeyE) {
+					fight.Fightp(&e.Player, monster)
 
-			if monster.Name == "claude" && monster.IsAlive {
-				e.NormalTalk(*monster, "Bonjour")
-				if monster.Position.X > e.Player.Position.X-20 &&
-					monster.Position.X < e.Player.Position.X+20 &&
-					monster.Position.Y > e.Player.Position.Y-20 &&
-					monster.Position.Y < e.Player.Position.Y+20 {
-					fight.Fightm(&e.Player, monster)
-					if e.Player.IsAlive == false {
-						e.StateEngine = GAMEOVER
-					}
-					if rl.IsKeyPressed(rl.KeyE) && monster.Position.X > e.Player.Position.X-50 &&
-						monster.Position.X < e.Player.Position.X+50 &&
-						monster.Position.Y > e.Player.Position.Y-50 &&
-						monster.Position.Y < e.Player.Position.Y+50 {
-						fight.Fightp(&e.Player, monster)
-					}
 				}
+			}
+			if monster.Position.X > e.Player.Position.X-20 &&
+				monster.Position.X < e.Player.Position.X+20 &&
+				monster.Position.Y > e.Player.Position.Y-20 &&
+				monster.Position.Y < e.Player.Position.Y+20 {
+				fight.Fightm(&e.Player, monster)
+				if e.Player.IsAlive == false {
+					e.StateEngine = GAMEOVER
+				}
+
 			}
 		}
 	}
@@ -155,10 +156,10 @@ func (e *Engine) ChasePlayer() {
 			xrel := float64(e.Player.Position.X-monster.Position.X) / distrel
 			yrel := float64(e.Player.Position.Y-monster.Position.Y) / distrel
 			if float32(float64(xrel)*float64(monster.Speed)) < 0 {
-				monster.Sprite = rl.LoadTexture("textures/entities/orc/Orc-Idle-Reverse.png")
+				//monster.Sprite = rl.LoadTexture("textures/entities/orc/Orc-Idle-Reverse.png")
 			}
 			if float32(float64(xrel)*float64(monster.Speed)) >= 0 {
-				monster.Sprite = rl.LoadTexture("textures/entities/orc/Orc-Idle.png")
+				//monster.Sprite = rl.LoadTexture("textures/entities/orc/Orc-Idle.png")
 			}
 			monster.Position.X += float32(float64(xrel) * float64(monster.Speed))
 			monster.Position.Y += float32(float64(yrel) * float64(monster.Speed))

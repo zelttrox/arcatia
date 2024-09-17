@@ -6,12 +6,12 @@ import (
 
 func (e *Engine) Load() {
 	// Chargement des textures du personnage
-	e.Player.Sprite = rl.LoadTexture("textures/entities/soldier/Soldier-Idle.png")
+	e.Player.SpriteRun = rl.LoadTexture("textures/entities/soldier/Soldier-Walk.png")
 }
 
 func (e *Engine) Unload() {
 	// On libère les textures chargées, le joueur, la map, les monstres, etc...
-	rl.UnloadTexture(e.Player.Sprite)
+	rl.UnloadTexture(e.Player.SpriteRun)
 
 	for _, sprite := range e.Sprites {
 		rl.UnloadTexture(sprite)

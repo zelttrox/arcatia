@@ -20,7 +20,8 @@ type Monster struct {
 
 	IsAlive bool
 
-	Sprite rl.Texture2D
+	Sprite  rl.Texture2D
+	Sprites []rl.Texture2D
 
 	IsAnimated  bool
 	FrameWidth  int
