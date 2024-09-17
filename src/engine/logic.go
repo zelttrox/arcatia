@@ -150,6 +150,9 @@ func (e *Engine) PauseLogic() {
 		e.StateMenu = HOME
 		rl.StopMusicStream(e.Music)
 	}
+	if rl.IsKeyPressed(rl.KeyR) {
+		e.reset()
+	}
 
 	//Musique
 	rl.UpdateMusicStream(e.Music)

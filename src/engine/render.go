@@ -16,8 +16,7 @@ func (e *Engine) HomeRendering() {
 
 	rl.DrawText("Home Menu", int32(rl.GetScreenWidth())/2-rl.MeasureText("Home Menu", 40)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
 	rl.DrawText("[Enter] to Play", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Enter] to Play", 20)/2, int32(rl.GetScreenHeight())/2, 20, rl.RayWhite)
-	rl.DrawText("[R] to restart", int32(rl.GetScreenWidth())/2-rl.MeasureText("[R] to restart", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
-	rl.DrawText("[Esc] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+200, 20, rl.RayWhite)
+	rl.DrawText("[Esc] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
 
 }
 func (e *Engine) GameOverRendering() {
@@ -53,7 +52,8 @@ func (e *Engine) PauseRendering() {
 
 	rl.DrawText("Paused", int32(rl.GetScreenWidth())/2-rl.MeasureText("Paused", 40)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
 	rl.DrawText("[P] or [Esc] to resume", int32(rl.GetScreenWidth())/2-rl.MeasureText("[P] or [Esc] to resume", 20)/2, int32(rl.GetScreenHeight())/2, 20, rl.RayWhite)
-	rl.DrawText("[Q]/[A] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
+	rl.DrawText("[R] to restart", int32(rl.GetScreenWidth())/2-rl.MeasureText("[R] to restart", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
+	rl.DrawText("[Q]/[A] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+200, 20, rl.RayWhite)
 
 	//rl.EndDrawing()
 }
@@ -67,7 +67,7 @@ func (e *Engine) RenderPlayer() {
 		e.Player.PlayerIdle()
 		e.Player.PlayerDraw()
 	}
-	
+
 }
 
 func (e *Engine) RenderMonsters() {
@@ -98,17 +98,17 @@ func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
 }
 
 func (e Engine) RenderHealth() {
-    rl.BeginMode2D(e.Camera)
+	rl.BeginMode2D(e.Camera)
 
-    rl.DrawRectangle(int32(e.Player.Position.X)+10, int32(e.Player.Position.Y), int32(50), 5, rl.DarkBrown)
-    rl.DrawRectangle(int32(e.Player.Position.X)+10, int32(e.Player.Position.Y), int32(e.Player.Health)/2, 5, rl.Red)
+	rl.DrawRectangle(int32(e.Player.Position.X)+10, int32(e.Player.Position.Y), int32(50), 5, rl.DarkBrown)
+	rl.DrawRectangle(int32(e.Player.Position.X)+10, int32(e.Player.Position.Y), int32(e.Player.Health)/2, 5, rl.Red)
 
-    for _, monster := range e.Monsters {
-        if monster.IsAlive {
-            rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32(50), 5, rl.DarkBlue)
-            rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32((monster.Health*50)/monster.MaxHealth), 5, rl.Blue)
-        }
-    }
+	for _, monster := range e.Monsters {
+		if monster.IsAlive {
+			rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32(50), 5, rl.DarkBlue)
+			rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32((monster.Health*50)/monster.MaxHealth), 5, rl.Blue)
+		}
+	}
 
-    rl.EndMode2D()
+	rl.EndMode2D()
 }
