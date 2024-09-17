@@ -27,9 +27,6 @@ func (e *Engine) HomeLogic() {
 	if rl.IsKeyPressed(rl.KeyEscape) {
 		e.IsRunning = false
 	}
-	if rl.IsKeyPressed(rl.KeyR) {
-		e.reset()
-	}
 }
 
 func (e *Engine) reset() {
@@ -149,6 +146,9 @@ func (e *Engine) PauseLogic() {
 	if rl.IsKeyPressed(rl.KeyA) {
 		e.StateMenu = HOME
 		rl.StopMusicStream(e.Music)
+	}
+	if rl.IsKeyPressed(rl.KeyR) {
+		e.reset()
 	}
 
 	//Musique

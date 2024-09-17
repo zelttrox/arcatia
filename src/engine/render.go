@@ -16,8 +16,7 @@ func (e *Engine) HomeRendering() {
 
 	rl.DrawText("Home Menu", int32(rl.GetScreenWidth())/2-rl.MeasureText("Home Menu", 40)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
 	rl.DrawText("[Enter] to Play", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Enter] to Play", 20)/2, int32(rl.GetScreenHeight())/2, 20, rl.RayWhite)
-	rl.DrawText("[R] to restart", int32(rl.GetScreenWidth())/2-rl.MeasureText("[R] to restart", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
-	rl.DrawText("[Esc] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+200, 20, rl.RayWhite)
+	rl.DrawText("[Esc] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
 
 }
 func (e *Engine) GameOverRendering() {
@@ -53,7 +52,8 @@ func (e *Engine) PauseRendering() {
 
 	rl.DrawText("Paused", int32(rl.GetScreenWidth())/2-rl.MeasureText("Paused", 40)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
 	rl.DrawText("[P] or [Esc] to resume", int32(rl.GetScreenWidth())/2-rl.MeasureText("[P] or [Esc] to resume", 20)/2, int32(rl.GetScreenHeight())/2, 20, rl.RayWhite)
-	rl.DrawText("[Q]/[A] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
+	rl.DrawText("[R] to restart", int32(rl.GetScreenWidth())/2-rl.MeasureText("[R] to restart", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
+	rl.DrawText("[Q]/[A] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+200, 20, rl.RayWhite)
 
 	//rl.EndDrawing()
 }
