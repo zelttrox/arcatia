@@ -105,11 +105,11 @@ func (e *Engine) CheckCollisions() {
 func (e *Engine) MonsterCollisions() {
 	for i := range e.Monsters {
 		monster := &e.Monsters[i]
-		if monster.Name == "claude" && monster.IsAlive {
-			if monster.Position.X > e.Player.Position.X-60 &&
-				monster.Position.X < e.Player.Position.X+60 &&
-				monster.Position.Y > e.Player.Position.Y-60 &&
-				monster.Position.Y < e.Player.Position.Y+60 {
+		if monster.IsAlive {
+			if monster.Position.X > e.Player.Position.X-40 &&
+				monster.Position.X < e.Player.Position.X+40 &&
+				monster.Position.Y > e.Player.Position.Y-40 &&
+				monster.Position.Y < e.Player.Position.Y+40 {
 				if rl.IsKeyPressed(rl.KeyE) {
 					fight.Fightp(&e.Player, monster)
 
