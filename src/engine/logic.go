@@ -37,7 +37,7 @@ func (e *Engine) GameOverLogic() {
 		for i := range e.Monsters {
 			monster := &e.Monsters[i]
 			monster.IsAlive = true
-			monster.Health = 20
+			monster.Health = monster.MaxHealth
 			monster.Position = monster.Origine
 		}
 		e.StateMenu = PLAY
@@ -114,10 +114,10 @@ func (e *Engine) MonsterCollisions() {
 					if e.Player.IsAlive == false {
 						e.StateEngine = GAMEOVER
 					}
-					if rl.IsKeyPressed(rl.KeyE) && monster.Position.X > e.Player.Position.X-40 &&
-						monster.Position.X < e.Player.Position.X+40 &&
-						monster.Position.Y > e.Player.Position.Y-40 &&
-						monster.Position.Y < e.Player.Position.Y+40 {
+					if rl.IsKeyPressed(rl.KeyE) && monster.Position.X > e.Player.Position.X-50 &&
+						monster.Position.X < e.Player.Position.X+50 &&
+						monster.Position.Y > e.Player.Position.Y-50 &&
+						monster.Position.Y < e.Player.Position.Y+50 {
 						fight.Fightp(&e.Player, monster)
 					}
 				}

@@ -79,6 +79,25 @@ func (e *Engine) InitEntities() {
 		FrameHeight: 100,
 		MaxFrames:   6,
 	})
+	e.Monsters = append(e.Monsters, entity.Monster{
+		Name:      "claude",
+		Position:  rl.Vector2{X: 600, Y: 600},
+		Health:    200,
+		MaxHealth: 200,
+		Damage:    35,
+		Loot:      []item.Item{},
+		Worth:     200,
+		Speed:     1,
+		Origine:   rl.Vector2{X: 600, Y: 600},
+
+		IsAlive: true,
+		Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
+
+		IsAnimated:  true,
+		FrameWidth:  100,
+		FrameHeight: 100,
+		MaxFrames:   6,
+	})
 
 	e.Player.Money = 300
 }

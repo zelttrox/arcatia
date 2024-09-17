@@ -99,13 +99,13 @@ func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
 func (e *Engine) RenderHealth() {
 	rl.BeginMode2D(e.Camera)
 
-	rl.DrawRectangle(int32(e.Player.Position.X)+25, int32(e.Player.Position.Y)+30, int32(100), 5, rl.DarkBrown)
-	rl.DrawRectangle(int32(e.Player.Position.X)+25, int32(e.Player.Position.Y)+30, int32(e.Player.Health), 5, rl.Red)
+	rl.DrawRectangle(int32(e.Player.Position.X)+45, int32(e.Player.Position.Y)+40, int32(50), 5, rl.DarkBrown)
+	rl.DrawRectangle(int32(e.Player.Position.X)+45, int32(e.Player.Position.Y)+40, int32(e.Player.Health)/2, 5, rl.Red)
 
 	for _, monster := range e.Monsters {
 		if monster.IsAlive {
-			rl.DrawRectangle(int32(monster.Position.X)+25, int32(monster.Position.Y)+30, int32(monster.MaxHealth), 5, rl.DarkBlue)
-			rl.DrawRectangle(int32(monster.Position.X)+25, int32(monster.Position.Y)+30, int32(monster.Health), 5, rl.Blue)
+			rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32(50), 5, rl.DarkBlue)
+			rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32((monster.Health*50)/monster.MaxHealth), 5, rl.Blue)
 		}
 	}
 
