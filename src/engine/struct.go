@@ -17,7 +17,7 @@ const (
 type engine int
 
 const (
-	INGAME  engine = iota
+	INGAME   engine = iota
 	PAUSE    engine = iota
 	GAMEOVER engine = iota
 )
