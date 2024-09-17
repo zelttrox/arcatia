@@ -97,14 +97,14 @@ func (e *Engine) RenderMap() {
 	// Prepare source and destination rectangle (only X and Y will change on both)
 	srcRectangle := rl.Rectangle{X: 0, Y: 0, Width: float32(e.MapJSON.TileHeight), Height: float32(e.MapJSON.TileHeight)}
 	destRectangle := rl.Rectangle{X: 0, Y: 0, Width: float32(e.MapJSON.TileWidth), Height: float32(e.MapJSON.TileWidth)}
-	column_counter := -1
+	column_counter := 0
 
 	for _, Layer := range e.MapJSON.Layers {
 		for _, tile := range Layer.Data {
 			if tile != 0 {
 				wantedTileSet := e.MapJSON.TileSets[0]
 				for _, TileSet := range e.MapJSON.TileSets { // Get correct texture
-					if TileSet.FirstGid < tile {
+					if TileSet.FirstGid <= tile {
 						wantedTileSet = TileSet
 					}
 				}
@@ -114,13 +114,13 @@ func (e *Engine) RenderMap() {
 				srcRectangle.X = float32(index)
 				srcRectangle.Y = 0
 
-				if index > wantedTileSet.Columns { // If Tile number exceeds columns (overflow), adjust, find X and Y coordinates
+				if index >= wantedTileSet.Columns { // If Tile number exceeds columns (overflow), adjust, find X and Y coordinates
 					srcRectangle.X = float32(index % wantedTileSet.Columns)
 					srcRectangle.Y = float32(index / wantedTileSet.Columns)
 				}
 
-				srcRectangle.X *= float32(e.MapJSON.TileWidth)
-				srcRectangle.Y *= float32(e.MapJSON.TileHeight)
+				srcRectangle.X *= 16
+				srcRectangle.Y *= 16
 
 				rl.DrawTexturePro(
 					e.Sprites[wantedTileSet.Name],
@@ -133,11 +133,11 @@ func (e *Engine) RenderMap() {
 			}
 
 			// After each draw, move to the right. When at max width, new line (like a typewriter)
-			destRectangle.X += 32
+			destRectangle.X += 16
 			column_counter += 1
 			if column_counter >= e.MapJSON.Width {
 				destRectangle.X = 0
-				destRectangle.Y += 32
+				destRectangle.Y += 16
 				column_counter = 0
 			}
 
