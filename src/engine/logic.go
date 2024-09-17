@@ -154,6 +154,12 @@ func (e *Engine) ChasePlayer() {
 		if distrel <= 200 && distrel > 20 {
 			xrel := float64(e.Player.Position.X-monster.Position.X) / distrel
 			yrel := float64(e.Player.Position.Y-monster.Position.Y) / distrel
+			if float32(float64(xrel)*float64(monster.Speed)) < 0 {
+				monster.Sprite = rl.LoadTexture("textures/entities/orc/Orc-Idle-Reverse.png")
+			}
+			if float32(float64(xrel)*float64(monster.Speed)) >= 0 {
+				monster.Sprite = rl.LoadTexture("textures/entities/orc/Orc-Idle.png")
+			}
 			monster.Position.X += float32(float64(xrel) * float64(monster.Speed))
 			monster.Position.Y += float32(float64(yrel) * float64(monster.Speed))
 		}
