@@ -128,7 +128,7 @@ func (e *Engine) MonsterCollisions() {
 				monster.Position.Y > e.Player.Position.Y-20 &&
 				monster.Position.Y < e.Player.Position.Y+20 {
 				fight.Fightm(&e.Player, monster)
-				if e.Player.IsAlive == false {
+				if !e.Player.IsAlive {
 					e.StateEngine = GAMEOVER
 				}
 

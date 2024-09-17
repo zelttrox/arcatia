@@ -67,6 +67,7 @@ func (e *Engine) RenderPlayer() {
 		e.Player.PlayerIdle()
 		e.Player.PlayerDraw()
 	}
+	
 }
 
 func (e *Engine) RenderMonsters() {
