@@ -1,6 +1,7 @@
 package engine
 
 import (
+	"fmt"
 	"main/src/entity"
 	"main/src/fight"
 	"math"
@@ -33,7 +34,7 @@ func (e *Engine) reset() {
 	e.Player.Health = 100
 	e.Player.Money = 300
 	e.Player.IsAlive = true
-	e.Player.Position = rl.Vector2{X: 300, Y: 300}
+	e.Player.Position = rl.Vector2{X: 128, Y: 180}
 	for i := range e.Monsters {
 		monster := &e.Monsters[i]
 		monster.IsAlive = true
@@ -64,25 +65,37 @@ func (e *Engine) SettingsLogic() {
 func (e *Engine) InGameLogic() {
 
 	e.Player.IsRunning = false
+
+	if e.Player.Position.Y > 10 {
+		if rl.IsKeyDown(rl.KeyW) || rl.IsKeyDown(rl.KeyUp) {
+			e.Player.Position.Y -= e.Player.Speed
+			e.Player.IsRunning = true
+		}
+	}
+		if e.Player.Position.Y < 230 {
+			if rl.IsKeyDown(rl.KeyS) || rl.IsKeyDown(rl.KeyDown) {
+				e.Player.Position.Y += e.Player.Speed
+				e.Player.IsRunning = true
+			}
+		}
+		if e.Player.Position.X > 90 {
+			if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
+				e.Player.Position.X -= e.Player.Speed
+				e.Player.IsRunning = true
+				e.Player.Dir = 1
+			}
+		}
+		if e.Player.Position.X < 375 {
+			if rl.IsKeyDown(rl.KeyD) || rl.IsKeyDown(rl.KeyRight) {
+				e.Player.Position.X += e.Player.Speed
+				e.Player.IsRunning = true
+				e.Player.Dir = 0
+			}
+		}
+
+	
+
 	// Mouvement
-	if rl.IsKeyDown(rl.KeyW) || rl.IsKeyDown(rl.KeyUp) {
-		e.Player.Position.Y -= e.Player.Speed
-		e.Player.IsRunning = true
-	}
-	if rl.IsKeyDown(rl.KeyS) || rl.IsKeyDown(rl.KeyDown) {
-		e.Player.Position.Y += e.Player.Speed
-		e.Player.IsRunning = true
-	}
-	if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
-		e.Player.Position.X -= e.Player.Speed
-		e.Player.IsRunning = true
-		e.Player.Dir = 1
-	}
-	if rl.IsKeyDown(rl.KeyD) || rl.IsKeyDown(rl.KeyRight) {
-		e.Player.Position.X += e.Player.Speed
-		e.Player.IsRunning = true
-		e.Player.Dir = 0
-	}
 	// Camera
 	e.Camera.Target = rl.Vector2{X: e.Player.Position.X + 70, Y: e.Player.Position.Y + 70}
 	e.Camera.Offset = rl.Vector2{X: ScreenWidth / 2, Y: ScreenHeight / 2}
@@ -103,6 +116,7 @@ func (e *Engine) InGameLogic() {
 }
 
 func (e *Engine) CheckCollisions() {
+	fmt.Println(e.Player.Position)
 	e.ChasePlayer()
 	e.MonsterCollisions()
 }
