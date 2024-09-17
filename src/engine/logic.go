@@ -67,9 +67,11 @@ func (e *Engine) InGameLogic() {
 	}
 	if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
 		e.Player.Position.X -= e.Player.Speed
+		e.Player.Sprite = rl.LoadTexture("textures/entities/soldier/Soldier-Idle-Reverse.png")
 	}
 	if rl.IsKeyDown(rl.KeyD) || rl.IsKeyDown(rl.KeyRight) {
 		e.Player.Position.X += e.Player.Speed
+		e.Player.Sprite = rl.LoadTexture("textures/entities/soldier/Soldier-Idle.png")
 	}
 
 	// Camera
