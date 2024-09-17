@@ -27,9 +27,6 @@ func (e *Engine) HomeLogic() {
 	if rl.IsKeyPressed(rl.KeyEscape) {
 		e.IsRunning = false
 	}
-	if rl.IsKeyPressed(rl.KeyR) {
-		e.reset()
-	}
 }
 
 func (e *Engine) reset() {
