@@ -107,9 +107,9 @@ func (e *Engine) MonsterCollisions() {
 		monster := &e.Monsters[i]
 		if monster.Name == "claude" && monster.IsAlive {
 			if monster.Position.X > e.Player.Position.X-60 &&
-				monster.Position.X < e.Player.Position.X+600 &&
-				monster.Position.Y > e.Player.Position.Y-600 &&
-				monster.Position.Y < e.Player.Position.Y+600 {
+				monster.Position.X < e.Player.Position.X+60 &&
+				monster.Position.Y > e.Player.Position.Y-60 &&
+				monster.Position.Y < e.Player.Position.Y+60 {
 				if rl.IsKeyPressed(rl.KeyE) {
 					fight.Fightp(&e.Player, monster)
 
