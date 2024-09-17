@@ -79,12 +79,13 @@ func (e *Engine) InGameLogic() {
 	if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
 		e.Player.Position.X -= e.Player.Speed
 		e.Player.IsRunning = true
+		e.Player.Dir = 1
 	}
 	if rl.IsKeyDown(rl.KeyD) || rl.IsKeyDown(rl.KeyRight) {
 		e.Player.Position.X += e.Player.Speed
 		e.Player.IsRunning = true
+		e.Player.Dir = 0
 	}
-
 	// Camera
 	e.Camera.Target = rl.Vector2{X: e.Player.Position.X + 70, Y: e.Player.Position.Y + 70}
 	e.Camera.Offset = rl.Vector2{X: ScreenWidth / 2, Y: ScreenHeight / 2}
@@ -173,4 +174,3 @@ func (e *Engine) ChasePlayer() {
 		}
 	}
 }
-

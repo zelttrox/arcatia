@@ -96,18 +96,18 @@ func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
 	rl.EndMode2D()
 }
 
-func (e *Engine) RenderHealth() {
-	rl.BeginMode2D(e.Camera)
+func (e Engine) RenderHealth() {
+    rl.BeginMode2D(e.Camera)
 
-	rl.DrawRectangle(int32(e.Player.Position.X)+45, int32(e.Player.Position.Y)+40, int32(50), 5, rl.DarkBrown)
-	rl.DrawRectangle(int32(e.Player.Position.X)+45, int32(e.Player.Position.Y)+40, int32(e.Player.Health)/2, 5, rl.Red)
+    rl.DrawRectangle(int32(e.Player.Position.X)+10, int32(e.Player.Position.Y), int32(50), 5, rl.DarkBrown)
+    rl.DrawRectangle(int32(e.Player.Position.X)+10, int32(e.Player.Position.Y), int32(e.Player.Health)/2, 5, rl.Red)
 
-	for _, monster := range e.Monsters {
-		if monster.IsAlive {
-			rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32(50), 5, rl.DarkBlue)
-			rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32((monster.Health*50)/monster.MaxHealth), 5, rl.Blue)
-		}
-	}
+    for _, monster := range e.Monsters {
+        if monster.IsAlive {
+            rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32(50), 5, rl.DarkBlue)
+            rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32((monster.Health*50)/monster.MaxHealth), 5, rl.Blue)
+        }
+    }
 
-	rl.EndMode2D()
+    rl.EndMode2D()
 }
