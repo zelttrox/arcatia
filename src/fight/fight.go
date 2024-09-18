@@ -33,7 +33,6 @@ func Fightp(player *entity.Player, monster *entity.Monster) {
 	if monster.Health <= 0 {
 		player.Inventory = append(player.Inventory, monster.Loot...)
 		player.Money += monster.Worth
-		player.Damage += 1
 		monster.IsAlive = false
 	}
 

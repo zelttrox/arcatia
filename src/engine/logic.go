@@ -91,6 +91,7 @@ func (e *Engine) InGameLogic() {
 
 func (e *Engine) CheckCollisions() {
 	fmt.Println(e.Player.Position)
+	fmt.Println(e.Player.Damage)
 	e.ChasePlayer()
 	e.MonsterCollisions()
 }
@@ -105,7 +106,9 @@ func (e *Engine) MonsterCollisions() {
 				monster.Position.Y < e.Player.Position.Y+40 {
 				if rl.IsKeyPressed(rl.KeyE) {
 					fight.Fightp(&e.Player, monster)
-
+					if !monster.IsAlive {
+						e.Player.Damage += 1
+					}
 				}
 			}
 			if monster.Position.X > e.Player.Position.X-20 &&
