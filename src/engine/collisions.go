@@ -74,7 +74,7 @@ func (e *Engine) Collisions() {
 			SALLE = 3
 			e.Player.Position = rl.Vector2{X: 184, Y: 1024}
 		}
-		if x == 84 && y == 460 {
+		if x <= 80 && x <= 88 && y >= 460 && y <= 470 {
 			SALLE = 1
 			e.Player.Position = rl.Vector2{X: 100, Y: 132}
 		}
