@@ -26,6 +26,9 @@ type Player struct {
 
 	SpriteIdle rl.Texture2D
 	SpriteRun  []rl.Texture2D
+
+	HomescreenSprite rl.Texture2D
+	GameoverSprite   rl.Texture2D
 }
 
 func (p *Player) Attack(m *Monster) {

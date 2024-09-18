@@ -24,7 +24,6 @@ func (e *Engine) Init() {
 	e.InitCamera()
 	e.InitMusic()
 	e.InitMap("textures/map/tilesets/map.json")
-
 }
 
 func (e *Engine) InitEntities() {
@@ -45,8 +44,10 @@ func (e *Engine) InitEntities() {
 		FrameHeight: 32,
 		MaxFrames:   10,
 
-		SpriteIdle: rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet.png"),
-		SpriteRun:  []rl.Texture2D{rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Right.png"), rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Left.png")},
+		SpriteIdle:       rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet.png"),
+		SpriteRun:        []rl.Texture2D{rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Right.png"), rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Left.png")},
+		HomescreenSprite: rl.LoadTexture("textures/menu/homescreen.png"),
+		GameoverSprite:   rl.LoadTexture("textures/menu/gameover.png"),
 	}
 	e.Monsters = append(e.Monsters, entity.Monster{
 		Name:      "claude",
@@ -121,7 +122,7 @@ func (e *Engine) InitCamera() {
 func (e *Engine) InitMusic() {
 	rl.InitAudioDevice()
 
-	e.Music = rl.LoadMusicStream("sounds/music/OSC-Ambient-Time-08-Egress.mp3")
+	e.Music = rl.LoadMusicStream("sounds/music/What_Was_I_Made_For.mp3")
 
 	rl.PlayMusicStream(e.Music)
 }
