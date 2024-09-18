@@ -151,7 +151,7 @@ func (e *Engine) ChasePlayer() {
 	for i := range e.Monsters {
 		monster := &e.Monsters[i]
 		distrel := math.Sqrt(math.Pow(float64(e.Player.Position.X)-float64(monster.Position.X), 2) + math.Pow(float64(e.Player.Position.Y)-float64(monster.Position.Y), 2))
-		if distrel <= 200 && distrel > 20 {
+		if distrel <= 60 && distrel > 20 {
 			xrel := float64(e.Player.Position.X-monster.Position.X) / distrel
 			yrel := float64(e.Player.Position.Y-monster.Position.Y) / distrel
 			if float32(float64(xrel)*float64(monster.Speed)) < 0 {
