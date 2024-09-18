@@ -91,6 +91,7 @@ func (e *Engine) InGameLogic() {
 
 func (e *Engine) CheckCollisions() {
 	fmt.Println(e.Player.Position)
+	fmt.Println(e.Player.Damage)
 	e.ChasePlayer()
 	e.MonsterCollisions()
 }
@@ -104,18 +105,7 @@ func (e *Engine) MonsterCollisions() {
 				monster.Position.Y > e.Player.Position.Y-40 &&
 				monster.Position.Y < e.Player.Position.Y+40 {
 				if rl.IsKeyPressed(rl.KeyE) {
-					if monster.Name == "distributeur" && e.Player.Health < 100 && e.Player.Money > 100*(e.Player.HealCount/10) {
-						if e.Player.Health >= 85 {
-							e.Player.Money -= (100 * (e.Player.HealCount / 10))
-							e.Player.Health = 100
-						} else {
-							e.Player.Money -= (100 * (e.Player.HealCount / 10))
-							e.Player.Health += 15
-						}
-						e.Player.HealCount++
-					} else {
-						fight.Fightp(&e.Player, monster)
-					}
+					fight.Fightp(&e.Player, monster)
 
 				}
 			}
@@ -159,7 +149,7 @@ func (e *Engine) ChasePlayer() {
 	for i := range e.Monsters {
 		monster := &e.Monsters[i]
 		distrel := math.Sqrt(math.Pow(float64(e.Player.Position.X)-float64(monster.Position.X), 2) + math.Pow(float64(e.Player.Position.Y)-float64(monster.Position.Y), 2))
-		if distrel <= 200 && distrel > 20 {
+		if distrel <= 60 && distrel > 20 {
 			xrel := float64(e.Player.Position.X-monster.Position.X) / distrel
 			yrel := float64(e.Player.Position.Y-monster.Position.Y) / distrel
 			if float32(float64(xrel)*float64(monster.Speed)) < 0 {

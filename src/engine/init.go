@@ -33,7 +33,7 @@ func (e *Engine) InitEntities() {
 		Health:    100,
 		Money:     1000,
 		Damage:    5,
-		Speed:     4,
+		Speed:     2,
 		Inventory: []item.Item{},
 
 		IsAlive:   true,
@@ -88,15 +88,15 @@ func (e *Engine) InitEntities() {
 		MaxFrames:   6,
 	})
 	e.Monsters = append(e.Monsters, entity.Monster{
-		Name:      "claude",
-		Position:  rl.Vector2{X: 400, Y: 320},
-		Health:    20,
-		MaxHealth: 20,
-		Damage:    5,
+		Name:      "Boss",
+		Position:  rl.Vector2{X: 360, Y: 1030},
+		Health:    200,
+		MaxHealth: 200,
+		Damage:    25,
 		Loot:      []item.Item{},
 		Worth:     12,
 		Speed:     2,
-		Origine:   rl.Vector2{X: 400, Y: 320},
+		Origine:   rl.Vector2{X: 360, Y: 1030},
 
 		IsAlive: true,
 		Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
@@ -126,15 +126,15 @@ func (e *Engine) InitEntities() {
 		MaxFrames:   6,
 	})
 	e.Monsters = append(e.Monsters, entity.Monster{
-		Name:      "claude",
-		Position:  rl.Vector2{X: 600, Y: 600},
-		Health:    200,
-		MaxHealth: 200,
-		Damage:    35,
+		Name:      "chien",
+		Position:  rl.Vector2{X: 212, Y: 20},
+		Health:    100,
+		MaxHealth: 100,
+		Damage:    15,
 		Loot:      []item.Item{},
 		Worth:     200,
 		Speed:     1,
-		Origine:   rl.Vector2{X: 600, Y: 600},
+		Origine:   rl.Vector2{X: 212, Y: 20},
 
 		IsAlive: true,
 		Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
@@ -145,7 +145,7 @@ func (e *Engine) InitEntities() {
 		MaxFrames:   6,
 	})
 
-	e.Player.Money = 300
+	e.Player.Money = 0
 }
 
 func (e *Engine) InitCamera() {
@@ -153,7 +153,7 @@ func (e *Engine) InitCamera() {
 		rl.NewVector2(0, 0),
 		rl.NewVector2(0, 0),
 		0.0,
-		3.0,
+		4.0,
 	)
 }
 

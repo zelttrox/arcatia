@@ -93,10 +93,6 @@ func (e *Engine) RenderMap() {
 				- Draw tile
 				- Move to next position (line, or column)
 	*/
-	rl.DrawRectangle(90, 10, 285, 220, rl.Lime)
-	rl.DrawRectangle(58, 410, 380, 222, rl.Red)
-	rl.DrawRectangle(-5,795,490,488,rl.Blue)
-
 	// Prepare source and destination rectangle (only X and Y will change on both)
 	srcRectangle := rl.Rectangle{X: 0, Y: 0, Width: float32(e.MapJSON.TileHeight), Height: float32(e.MapJSON.TileHeight)}
 	destRectangle := rl.Rectangle{X: 0, Y: 0, Width: float32(e.MapJSON.TileWidth), Height: float32(e.MapJSON.TileWidth)}
