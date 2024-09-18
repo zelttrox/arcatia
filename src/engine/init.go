@@ -39,6 +39,8 @@ func (e *Engine) InitEntities() {
 		IsAlive:   true,
 		IsRunning: false,
 
+		HealCount: 10,
+
 		IsAnimated:  true,
 		FrameWidth:  32,
 		FrameHeight: 32,
@@ -49,6 +51,42 @@ func (e *Engine) InitEntities() {
 		HomescreenSprite: rl.LoadTexture("textures/menu/homescreen.png"),
 		GameoverSprite:   rl.LoadTexture("textures/menu/gameover.png"),
 	}
+	e.Monsters = append(e.Monsters, entity.Monster{
+		Name:      "distributeur",
+		Position:  rl.Vector2{X: 240, Y: 460},
+		Health:    200,
+		MaxHealth: 200,
+		Damage:    0,
+		Loot:      []item.Item{},
+		Worth:     12,
+		Speed:     0,
+		Origine:   rl.Vector2{X: 240, Y: 460},
+
+		IsAlive: true,
+
+		IsAnimated:  false,
+		FrameWidth:  100,
+		FrameHeight: 100,
+		MaxFrames:   6,
+	})
+	e.Monsters = append(e.Monsters, entity.Monster{
+		Name:      "Gobby King",
+		Position:  rl.Vector2{X: 240, Y: 460},
+		Health:    200,
+		MaxHealth: 200,
+		Damage:    0,
+		Loot:      []item.Item{},
+		Worth:     12,
+		Speed:     0,
+		Origine:   rl.Vector2{X: 240, Y: 460},
+
+		IsAlive: true,
+
+		IsAnimated:  false,
+		FrameWidth:  100,
+		FrameHeight: 100,
+		MaxFrames:   6,
+	})
 	e.Monsters = append(e.Monsters, entity.Monster{
 		Name:      "claude",
 		Position:  rl.Vector2{X: 400, Y: 320},

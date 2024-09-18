@@ -18,12 +18,13 @@ type Player struct {
 	IsAlive   bool
 	IsRunning bool
 	Dir       int
+	HealCount int
 
 	IsAnimated  bool
 	FrameWidth  int
 	FrameHeight int
 	MaxFrames   int
-
+	
 	SpriteIdle rl.Texture2D
 	SpriteRun  []rl.Texture2D
 

@@ -104,7 +104,18 @@ func (e *Engine) MonsterCollisions() {
 				monster.Position.Y > e.Player.Position.Y-40 &&
 				monster.Position.Y < e.Player.Position.Y+40 {
 				if rl.IsKeyPressed(rl.KeyE) {
-					fight.Fightp(&e.Player, monster)
+					if monster.Name == "distributeur" && e.Player.Health < 100 && e.Player.Money > 100*(e.Player.HealCount/10) {
+						if e.Player.Health >= 85 {
+							e.Player.Money -= (100 * (e.Player.HealCount / 10))
+							e.Player.Health = 100
+						} else {
+							e.Player.Money -= (100 * (e.Player.HealCount / 10))
+							e.Player.Health += 15
+						}
+						e.Player.HealCount++
+					} else {
+						fight.Fightp(&e.Player, monster)
+					}
 
 				}
 			}

@@ -70,6 +70,18 @@ func (e *Engine) RenderMonsters() {
 		if monster.IsAlive {
 			monster.UpdateAnimation()
 			monster.Draw()
+			if monster.Name == "distributeur" {
+				dialogBoxColor := rl.NewColor(200, 200, 185, 150)
+				rl.DrawRectangle(int32(monster.Position.X+5), int32(monster.Position.Y), 45, 10, dialogBoxColor)
+
+				rl.DrawText(
+					"[E] Food",
+					int32(245),
+					int32(460),
+					2,
+					rl.RayWhite,
+				)
+			}
 		}
 	}
 }
@@ -103,9 +115,11 @@ func (e Engine) RenderHealth() {
 	rl.DrawRectangle(int32(e.Player.Position.X)+10, int32(e.Player.Position.Y), int32(e.Player.Health)/2, 5, rl.Red)
 
 	for _, monster := range e.Monsters {
-		if monster.IsAlive {
-			rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32(50), 5, rl.DarkBlue)
-			rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32((monster.Health*50)/monster.MaxHealth), 5, rl.Blue)
+		if monster.Name != "distributeur" {
+			if monster.IsAlive {
+				rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32(50), 5, rl.DarkBlue)
+				rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32((monster.Health*50)/monster.MaxHealth), 5, rl.Blue)
+			}
 		}
 	}
 
