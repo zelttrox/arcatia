@@ -17,7 +17,7 @@ type Player struct {
 
 	IsAlive   bool
 	IsRunning bool
-	Dir int
+	Dir       int
 
 	IsAnimated  bool
 	FrameWidth  int
@@ -68,7 +68,7 @@ func (p *Player) PlayerDraw() {
 		Width: float32(p.FrameWidth), Height: float32(p.FrameHeight),
 	}
 	position := rl.Rectangle{
-		X: p.Position.X , Y: p.Position.Y-10,
+		X: p.Position.X + 15, Y: p.Position.Y,
 		Width: float32(p.FrameWidth), Height: float32(p.FrameHeight),
 	}
 	rl.DrawTexturePro(p.SpriteRun[p.Dir], frameRec, position, rl.Vector2{}, 0, rl.White)
