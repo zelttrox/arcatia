@@ -22,6 +22,8 @@ const (
 	GAMEOVER engine = iota
 )
 
+var SALLE int = 1
+
 type Engine struct {
 	Player   entity.Player
 	Monsters []entity.Monster

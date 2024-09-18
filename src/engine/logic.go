@@ -31,6 +31,7 @@ func (e *Engine) HomeLogic() {
 }
 
 func (e *Engine) reset() {
+	SALLE = 1
 	e.Player.Health = 100
 	e.Player.Money = 300
 	e.Player.IsAlive = true
@@ -66,34 +67,7 @@ func (e *Engine) InGameLogic() {
 
 	e.Player.IsRunning = false
 
-	if e.Player.Position.Y > 10 {
-		if rl.IsKeyDown(rl.KeyW) || rl.IsKeyDown(rl.KeyUp) {
-			e.Player.Position.Y -= e.Player.Speed
-			e.Player.IsRunning = true
-		}
-	}
-		if e.Player.Position.Y < 230 {
-			if rl.IsKeyDown(rl.KeyS) || rl.IsKeyDown(rl.KeyDown) {
-				e.Player.Position.Y += e.Player.Speed
-				e.Player.IsRunning = true
-			}
-		}
-		if e.Player.Position.X > 90 {
-			if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
-				e.Player.Position.X -= e.Player.Speed
-				e.Player.IsRunning = true
-				e.Player.Dir = 1
-			}
-		}
-		if e.Player.Position.X < 375 {
-			if rl.IsKeyDown(rl.KeyD) || rl.IsKeyDown(rl.KeyRight) {
-				e.Player.Position.X += e.Player.Speed
-				e.Player.IsRunning = true
-				e.Player.Dir = 0
-			}
-		}
-
-	
+	e.Collisions()
 
 	// Mouvement
 	// Camera
