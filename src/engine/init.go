@@ -115,7 +115,7 @@ func (e *Engine) InitCamera() {
 		rl.NewVector2(0, 0),
 		rl.NewVector2(0, 0),
 		0.0,
-		3.0,
+		4.0,
 	)
 }
 
