@@ -12,19 +12,14 @@ func (e *Engine) Rendering() {
 }
 
 func (e *Engine) HomeRendering() {
-	rl.ClearBackground(rl.Blue)
+	rl.DrawTexture(e.Player.HomescreenSprite, 0, 0, rl.White)
 
-	rl.DrawText("Home Menu", int32(rl.GetScreenWidth())/2-rl.MeasureText("Home Menu", 40)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
-	rl.DrawText("[Enter] to Play", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Enter] to Play", 20)/2, int32(rl.GetScreenHeight())/2, 20, rl.RayWhite)
-	rl.DrawText("[Esc] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
+	rl.DrawText("[Enter] to Play", int32(rl.GetScreenWidth())/2-505, int32(rl.GetScreenHeight())/2-40, 40, rl.RayWhite)
+	rl.DrawText("[Esc] to Quit", int32(rl.GetScreenWidth())/2-505, int32(rl.GetScreenHeight())/2+100-40, 40, rl.RayWhite)
 
 }
 func (e *Engine) GameOverRendering() {
-	rl.ClearBackground(rl.Black)
-
-	rl.DrawText("GAME OVER", int32(rl.GetScreenWidth())/2-rl.MeasureText("Home Menu", 40)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
-	rl.DrawText("[Enter] to replay", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Enter] to Play", 20)/2, int32(rl.GetScreenHeight())/2, 20, rl.RayWhite)
-	rl.DrawText("[Esc] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
+	rl.DrawTexture(e.Player.GameoverSprite, 0, 0, rl.White)
 
 }
 
@@ -84,17 +79,21 @@ func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
 
 	dialogBoxColor := rl.NewColor(200, 200, 185, 150)
 
-	rl.DrawRectangle(450, 300, 200, 50, dialogBoxColor)
+	for _, monster := range e.Monsters {
+		if monster.IsAlive {
+			rl.DrawRectangle(int32(monster.Position.X), int32(monster.Position.Y), 200, 50, dialogBoxColor)
 
-	rl.DrawText(
-		sentence,
-		int32(450),
-		int32(300),
-		10,
-		rl.RayWhite,
-	)
+			rl.DrawText(
+				sentence,
+				int32(450),
+				int32(300),
+				10,
+				rl.RayWhite,
+			)
 
-	rl.EndMode2D()
+			rl.EndMode2D()
+		}
+	}
 }
 
 func (e Engine) RenderHealth() {
