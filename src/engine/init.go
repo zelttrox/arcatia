@@ -33,7 +33,7 @@ func (e *Engine) InitEntities() {
 		Health:    100,
 		Money:     1000,
 		Damage:    5,
-		Speed:     4,
+		Speed:     2,
 		Inventory: []item.Item{},
 
 		IsAlive:   true,
