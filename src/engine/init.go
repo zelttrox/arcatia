@@ -50,15 +50,15 @@ func (e *Engine) InitEntities() {
 		GameoverSprite:   rl.LoadTexture("textures/menu/gameover.png"),
 	}
 	e.Monsters = append(e.Monsters, entity.Monster{
-		Name:      "claude",
-		Position:  rl.Vector2{X: 400, Y: 320},
-		Health:    20,
-		MaxHealth: 20,
-		Damage:    5,
+		Name:      "Boss",
+		Position:  rl.Vector2{X: 396, Y: 1068},
+		Health:    200,
+		MaxHealth: 200,
+		Damage:    25,
 		Loot:      []item.Item{},
 		Worth:     12,
 		Speed:     2,
-		Origine:   rl.Vector2{X: 400, Y: 320},
+		Origine:   rl.Vector2{X: 396, Y: 1068},
 
 		IsAlive: true,
 		Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
