@@ -54,7 +54,7 @@ func (e *Engine) InitEntities() {
 	e.Monsters = append(e.Monsters, entity.Monster{
 		Name:      "distributeur",
 		Position:  rl.Vector2{X: 240, Y: 460},
-		Health:    200,
+		Health:    0,
 		MaxHealth: 200,
 		Damage:    0,
 		Loot:      []item.Item{},
@@ -69,24 +69,7 @@ func (e *Engine) InitEntities() {
 		FrameHeight: 100,
 		MaxFrames:   10,
 	})
-	e.Monsters = append(e.Monsters, entity.Monster{
-		Name:      "Gobby King",
-		Position:  rl.Vector2{X: 240, Y: 460},
-		Health:    200,
-		MaxHealth: 200,
-		Damage:    0,
-		Loot:      []item.Item{},
-		Worth:     12,
-		Speed:     0,
-		Origine:   rl.Vector2{X: 240, Y: 460},
 
-		IsAlive: true,
-
-		IsAnimated:  false,
-		FrameWidth:  100,
-		FrameHeight: 100,
-		MaxFrames:   6,
-	})
 	e.Monsters = append(e.Monsters, entity.Monster{
 		Name:      "Boss",
 		Position:  rl.Vector2{X: 360, Y: 1030},

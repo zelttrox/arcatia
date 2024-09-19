@@ -37,21 +37,23 @@ func (e *Engine) InGameRendering() {
 	rl.EndMode2D() // On finit le rendu camera
 
 	// Ecriture fixe (car pas affectée par le mode camera)
-	rl.DrawText("[P] or [Esc] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("[P] or [Esc] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-350, 20, rl.RayWhite)
-	rl.DrawText("MONEY : "+strconv.Itoa(e.Player.Money), int32(rl.GetScreenWidth()/2-650), int32(rl.GetScreenHeight())/2-300, 40, rl.RayWhite)
-	rl.DrawText("PV : "+strconv.Itoa(e.Player.Health), int32(rl.GetScreenWidth()/2-650), int32(rl.GetScreenHeight())/2-250, 40, rl.RayWhite)
+	rl.DrawRectangle(int32(rl.GetScreenWidth()/2-650), int32(rl.GetScreenHeight()/2-350), 200, 25, rl.DarkBrown)
+	rl.DrawRectangle(int32(rl.GetScreenWidth()/2-650), int32(rl.GetScreenHeight()/2-350), int32(e.Player.Health)+100, 25, rl.Red)
+	rl.DrawText("[P] or [Esc] to Pause", int32(rl.GetScreenWidth())/2-550-rl.MeasureText("[P] or [Esc] to Pause", 20)/2, int32(rl.GetScreenHeight())/2+350, 20, rl.RayWhite)
+	rl.DrawText("MONEY : "+strconv.Itoa(e.Player.Money), int32(rl.GetScreenWidth()/2-650), int32(rl.GetScreenHeight())/2-300, 25, rl.RayWhite)
 }
 
 func (e *Engine) PauseRendering() {
-	rl.ClearBackground(rl.Red)
 
+	rl.ClearBackground(rl.Red)
 	rl.DrawText("Paused", int32(rl.GetScreenWidth())/2-rl.MeasureText("Paused", 40)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
-	rl.DrawText("[P] or [Esc] to resume", int32(rl.GetScreenWidth())/2-rl.MeasureText("[P] or [Esc] to resume", 20)/2, int32(rl.GetScreenHeight())/2, 20, rl.RayWhite)
+	rl.DrawText("[P] or [Esc] to resume", int32(rl.GetScreenWidth())-rl.MeasureText("[P] or [Esc] to resume", 20), int32(rl.GetScreenHeight()), 20, rl.RayWhite)
 	rl.DrawText("[R] to restart", int32(rl.GetScreenWidth())/2-rl.MeasureText("[R] to restart", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
 	rl.DrawText("[Q]/[A] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+200, 20, rl.RayWhite)
 
 	//rl.EndDrawing()
 }
+
 
 func (e *Engine) RenderPlayer() {
 
@@ -72,13 +74,13 @@ func (e *Engine) RenderMonsters() {
 			monster.Draw()
 			if monster.Name == "distributeur" {
 				dialogBoxColor := rl.NewColor(200, 200, 185, 150)
-				rl.DrawRectangle(int32(monster.Position.X+5), int32(monster.Position.Y), 45, 10, dialogBoxColor)
+				rl.DrawRectangle(int32(monster.Position.X+5), int32(monster.Position.Y), 191, 10, dialogBoxColor)
 
 				rl.DrawText(
-					"[E] Food",
+					"[E] Food(+Heal) or [R] Drink(+Damage)",
 					int32(245),
 					int32(460),
-					2,
+					int32(1),
 					rl.RayWhite,
 				)
 			}
@@ -111,11 +113,10 @@ func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
 func (e Engine) RenderHealth() {
 	rl.BeginMode2D(e.Camera)
 
-	rl.DrawRectangle(int32(e.Player.Position.X)+10, int32(e.Player.Position.Y), int32(50), 5, rl.DarkBrown)
-	rl.DrawRectangle(int32(e.Player.Position.X)+10, int32(e.Player.Position.Y), int32(e.Player.Health)/2, 5, rl.Red)
+
 
 	for _, monster := range e.Monsters {
-		if monster.Name != "distributeur" {
+		if !(monster.Name == "distributeur") {
 			if monster.IsAlive {
 				rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32(50), 5, rl.DarkBlue)
 				rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32((monster.Health*50)/monster.MaxHealth), 5, rl.Blue)

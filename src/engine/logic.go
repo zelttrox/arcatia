@@ -104,21 +104,25 @@ func (e *Engine) MonsterCollisions() {
 				monster.Position.X < e.Player.Position.X+40 &&
 				monster.Position.Y > e.Player.Position.Y-40 &&
 				monster.Position.Y < e.Player.Position.Y+40 {
+				if rl.IsKeyPressed(rl.KeyR) {
+					if monster.Name == "distributeur" && e.Player.Money >= 100 {
+						e.Player.Money -= 100
+						e.Player.Damage += 3
+					}
+				}
 				if rl.IsKeyPressed(rl.KeyE) {
-					if monster.Name == "distributeur" && e.Player.Money >= 100 && e.Player.Health < 100 {
+					if monster.Name == "distributeur" && e.Player.Money >= 50 && e.Player.Health < 100 {
 						if e.Player.Health >= 85 {
 							e.Player.Health = 100
-							e.Player.Money -= 100
+							e.Player.Money -= 50
 						} else {
 							e.Player.Health += 15
-							e.Player.Money -= 100
+							e.Player.Money -= 50
 						}
 
 					} else {
 						fight.Fightp(&e.Player, monster)
-						if monster.IsAlive == false {
-							e.Player.Damage += 1
-						}
+						
 					}
 				}
 			}
