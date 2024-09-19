@@ -53,6 +53,14 @@ func (e *Engine) GameOverLogic() {
 		e.IsRunning = false
 	}
 }
+func (e *Engine) GoodGameLogic() {
+	if rl.IsKeyPressed(rl.KeyEnter) {
+		e.reset()
+	}
+	if rl.IsKeyPressed(rl.KeyEscape) {
+		e.IsRunning = false
+	}
+}
 
 func (e *Engine) SettingsLogic() {
 	//Menus
@@ -122,7 +130,7 @@ func (e *Engine) MonsterCollisions() {
 
 					} else {
 						fight.Fightp(&e.Player, monster)
-						
+
 					}
 				}
 			}
@@ -134,8 +142,11 @@ func (e *Engine) MonsterCollisions() {
 				if !e.Player.IsAlive {
 					e.StateEngine = GAMEOVER
 				}
-
+				if monster.Name == "Boss" && monster.IsAlive == false {
+					e.StateEngine = WIN
+				}
 			}
+
 		}
 	}
 }

@@ -20,6 +20,7 @@ const (
 	INGAME   engine = iota
 	PAUSE    engine = iota
 	GAMEOVER engine = iota
+	WIN      engine = iota
 )
 
 var SALLE int = 1

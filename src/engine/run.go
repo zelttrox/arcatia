@@ -32,7 +32,12 @@ func (engine *Engine) Run() {
 			case GAMEOVER:
 				engine.GameOverRendering()
 				engine.GameOverLogic()
+			case WIN:
+				engine.GoodGameRendering()
+				engine.GoodGameLogic()
 			}
+		
+
 		}
 
 		rl.EndDrawing()

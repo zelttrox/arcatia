@@ -22,6 +22,9 @@ func (e *Engine) GameOverRendering() {
 	rl.DrawTexture(e.Player.GameoverSprite, 0, 0, rl.White)
 
 }
+func (e *Engine) GoodGameRendering() {
+	rl.DrawTexture(e.Player.GoodGameSprite, 0,0, rl.White)
+}
 
 func (e *Engine) InGameRendering() {
 	rl.ClearBackground(rl.Brown)
@@ -37,6 +40,7 @@ func (e *Engine) InGameRendering() {
 	rl.EndMode2D() // On finit le rendu camera
 
 	// Ecriture fixe (car pas affectée par le mode camera)
+	rl.DrawFPS(int32(rl.GetScreenWidth()/2+600), int32(rl.GetScreenHeight()/2-350))
 	rl.DrawRectangle(int32(rl.GetScreenWidth()/2-650), int32(rl.GetScreenHeight()/2-350), 200, 25, rl.DarkBrown)
 	rl.DrawRectangle(int32(rl.GetScreenWidth()/2-650), int32(rl.GetScreenHeight()/2-350), int32(e.Player.Health)+100, 25, rl.Red)
 	rl.DrawText("[P] or [Esc] to Pause", int32(rl.GetScreenWidth())/2-550-rl.MeasureText("[P] or [Esc] to Pause", 20)/2, int32(rl.GetScreenHeight())/2+350, 20, rl.RayWhite)
@@ -54,8 +58,8 @@ func (e *Engine) PauseRendering() {
 	//rl.EndDrawing()
 }
 
-
 func (e *Engine) RenderPlayer() {
+
 
 	if e.Player.IsRunning {
 		e.Player.PlayerAnimation()
@@ -74,14 +78,14 @@ func (e *Engine) RenderMonsters() {
 			monster.Draw()
 			if monster.Name == "distributeur" {
 				dialogBoxColor := rl.NewColor(200, 200, 185, 150)
-				rl.DrawRectangle(int32(monster.Position.X+5), int32(monster.Position.Y), 191, 10, dialogBoxColor)
+				rl.DrawRectangle(int32(monster.Position.X)-25, int32(monster.Position.Y)-10, 191, 9, dialogBoxColor)
 
 				rl.DrawText(
 					"[E] Food(+Heal) or [R] Drink(+Damage)",
-					int32(245),
-					int32(460),
+					int32(monster.Position.X)-25, 
+					int32(monster.Position.Y)-10,
 					int32(1),
-					rl.RayWhite,
+					rl.DarkBrown,
 				)
 			}
 		}
@@ -112,8 +116,6 @@ func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
 
 func (e Engine) RenderHealth() {
 	rl.BeginMode2D(e.Camera)
-
-
 
 	for _, monster := range e.Monsters {
 		if !(monster.Name == "distributeur") {

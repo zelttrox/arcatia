@@ -30,6 +30,7 @@ type Player struct {
 
 	HomescreenSprite rl.Texture2D
 	GameoverSprite   rl.Texture2D
+	GoodGameSprite rl.Texture2D
 }
 
 func (p *Player) Attack(m *Monster) {
