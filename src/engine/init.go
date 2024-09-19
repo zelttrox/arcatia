@@ -50,12 +50,7 @@ func (e *Engine) InitEntities() {
 		SpriteRun:        []rl.Texture2D{rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Right.png"), rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Left.png")},
 		HomescreenSprite: rl.LoadTexture("textures/menu/homescreen.png"),
 		GameoverSprite:   rl.LoadTexture("textures/menu/gameover.png"),
-<<<<<<< Updated upstream
 		GoodGameSprite: rl.LoadTexture("textures/menu/goodgame.jpg"),
-=======
-
-		KilledMice: true,
->>>>>>> Stashed changes
 	}
 	e.Monsters = append(e.Monsters, entity.Monster{
 		Name:      "distributeur",
