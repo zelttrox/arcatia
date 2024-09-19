@@ -116,6 +116,9 @@ func (e *Engine) MonsterCollisions() {
 
 					} else {
 						fight.Fightp(&e.Player, monster)
+						if monster.IsAlive == false {
+							e.Player.Damage += 1
+						}
 					}
 				}
 			}
@@ -158,18 +161,20 @@ func (e *Engine) ChasePlayer() {
 
 	for i := range e.Monsters {
 		monster := &e.Monsters[i]
-		distrel := math.Sqrt(math.Pow(float64(e.Player.Position.X)-float64(monster.Position.X), 2) + math.Pow(float64(e.Player.Position.Y)-float64(monster.Position.Y), 2))
-		if distrel <= 60 && distrel > 20 {
-			xrel := float64(e.Player.Position.X-monster.Position.X) / distrel
-			yrel := float64(e.Player.Position.Y-monster.Position.Y) / distrel
-			if float32(float64(xrel)*float64(monster.Speed)) < 0 {
-				//monster.Sprite = rl.LoadTexture("textures/entities/orc/Orc-Idle-Reverse.png")
+		if !(monster.Name == "distributeur") {
+			distrel := math.Sqrt(math.Pow(float64(e.Player.Position.X)-float64(monster.Position.X), 2) + math.Pow(float64(e.Player.Position.Y)-float64(monster.Position.Y), 2))
+			if distrel <= 60 && distrel > 20 {
+				xrel := float64(e.Player.Position.X-monster.Position.X) / distrel
+				yrel := float64(e.Player.Position.Y-monster.Position.Y) / distrel
+				if float32(float64(xrel)*float64(monster.Speed)) < 0 {
+					//monster.Sprite = rl.LoadTexture("textures/entities/orc/Orc-Idle-Reverse.png")
+				}
+				if float32(float64(xrel)*float64(monster.Speed)) >= 0 {
+					//monster.Sprite = rl.LoadTexture("textures/entities/orc/Orc-Idle.png")
+				}
+				monster.Position.X += float32(float64(xrel) * float64(monster.Speed))
+				monster.Position.Y += float32(float64(yrel) * float64(monster.Speed))
 			}
-			if float32(float64(xrel)*float64(monster.Speed)) >= 0 {
-				//monster.Sprite = rl.LoadTexture("textures/entities/orc/Orc-Idle.png")
-			}
-			monster.Position.X += float32(float64(xrel) * float64(monster.Speed))
-			monster.Position.Y += float32(float64(yrel) * float64(monster.Speed))
 		}
 	}
 }
