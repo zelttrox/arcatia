@@ -50,7 +50,7 @@ func (e *Engine) InitEntities() {
 		SpriteRun:        []rl.Texture2D{rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Right.png"), rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Left.png")},
 		HomescreenSprite: rl.LoadTexture("textures/menu/homescreen.png"),
 		GameoverSprite:   rl.LoadTexture("textures/menu/gameover.png"),
-		GoodGameSprite: rl.LoadTexture("textures/menu/goodgame.jpg"),
+		GoodGameSprite:   rl.LoadTexture("textures/menu/goodgame.jpg"),
 	}
 	e.Monsters = append(e.Monsters, entity.Monster{
 		Name:      "distributeur",
@@ -71,22 +71,22 @@ func (e *Engine) InitEntities() {
 		MaxFrames:   10,
 	})
 	e.Monsters = append(e.Monsters, entity.Monster{
-		Name:      "Gobby King",
+		Name:      "chien",
 		Position:  rl.Vector2{X: 212, Y: 20},
-		Health:    300,
-		MaxHealth: 300,
-		Damage:    0,
+		Health:    50,
+		MaxHealth: 50,
+		Damage:    10,
 		Loot:      []item.Item{},
-		Worth:     3000,
-		Speed:     0,
+		Worth:     200,
+		Speed:     2,
 		Origine:   rl.Vector2{X: 212, Y: 20},
 
 		IsAlive: true,
-		Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
+		Sprite:  rl.LoadTexture("textures/entities/dog/GoldenIdle.png"),
 
 		IsAnimated:  true,
-		FrameWidth:  100,
-		FrameHeight: 100,
+		FrameWidth:  64,
+		FrameHeight: 64,
 		MaxFrames:   6,
 	})
 	e.Monsters = append(e.Monsters, entity.Monster{
@@ -201,32 +201,14 @@ func (e *Engine) InitEntities() {
 		Origine:   rl.Vector2{X: 360, Y: 1030},
 
 		IsAlive: true,
-		Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
+		Sprite:  rl.LoadTexture("textures/entities/dog/RottweilerIdle.png"),
 
 		IsAnimated:  true,
-		FrameWidth:  100,
-		FrameHeight: 100,
+		FrameWidth:  64,
+		FrameHeight: 64,
 		MaxFrames:   6,
 	})
-	e.Monsters = append(e.Monsters, entity.Monster{
-		Name:      "claude",
-		Position:  rl.Vector2{X: 500, Y: 600},
-		Health:    20,
-		MaxHealth: 20,
-		Damage:    5,
-		Loot:      []item.Item{},
-		Worth:     12,
-		Speed:     2,
-		Origine:   rl.Vector2{X: 500, Y: 600},
 
-		IsAlive: true,
-		Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
-
-		IsAnimated:  true,
-		FrameWidth:  100,
-		FrameHeight: 100,
-		MaxFrames:   6,
-	})
 	// e.Monsters = append(e.Monsters, entity.Monster{
 	// 	Name:      "chien",
 	// 	Position:  rl.Vector2{X: 212, Y: 20},
