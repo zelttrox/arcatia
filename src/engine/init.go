@@ -58,7 +58,7 @@ func (e *Engine) InitEntities() {
 		MaxHealth: 200,
 		Damage:    0,
 		Loot:      []item.Item{},
-		Worth:     12,
+		Worth:     0,
 		Speed:     0,
 		Origine:   rl.Vector2{X: 240, Y: 460},
 
@@ -67,7 +67,7 @@ func (e *Engine) InitEntities() {
 		IsAnimated:  false,
 		FrameWidth:  100,
 		FrameHeight: 100,
-		MaxFrames:   6,
+		MaxFrames:   10,
 	})
 	e.Monsters = append(e.Monsters, entity.Monster{
 		Name:      "Gobby King",
