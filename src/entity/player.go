@@ -24,14 +24,14 @@ type Player struct {
 	FrameWidth  int
 	FrameHeight int
 	MaxFrames   int
-	
+
 	SpriteIdle rl.Texture2D
 	SpriteRun  []rl.Texture2D
 
-	HomescreenSprite rl.Texture2D
+	HomescreenSprite  rl.Texture2D
 	PausescreenSprite rl.Texture2D
-	GameoverSprite   rl.Texture2D
-	GoodGameSprite rl.Texture2D
+	GameoverSprite    rl.Texture2D
+	GoodGameSprite    rl.Texture2D
 }
 
 func (p *Player) Attack(m *Monster) {
@@ -65,12 +65,12 @@ func (p Player) PlayerAnimation() {
 }
 
 func (p Player) PlayerIdle() {
-	CurrentFrame = 0
+	CurrentFrame2 = 0
 }
 
 func (p *Player) PlayerDraw() {
 	frameRec := rl.Rectangle{
-		X: float32(p.FrameWidth + p.FrameWidth*CurrentFrame), Y: 0,
+		X: float32(p.FrameWidth + p.FrameWidth*CurrentFrame2), Y: 0,
 		Width: float32(p.FrameWidth), Height: float32(p.FrameHeight),
 	}
 	position := rl.Rectangle{
