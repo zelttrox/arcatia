@@ -158,11 +158,11 @@ func (e *Engine) NormalTalk(m entity.Monster, sentence string) {
 func (e *Engine) PauseLogic() {
 	//Menus
 	if rl.IsKeyPressed(rl.KeyEscape) || rl.IsKeyPressed(rl.KeyP) {
-		e.StateEngine = INGAME
-	}
-	if rl.IsKeyPressed(rl.KeyA) {
-		e.StateMenu = HOME
+		e.Close()
 		rl.StopMusicStream(e.Music)
+	}
+	if rl.IsKeyPressed(rl.KeyEnter) {
+		e.StateEngine = INGAME
 	}
 	if rl.IsKeyPressed(rl.KeyR) {
 		e.reset()

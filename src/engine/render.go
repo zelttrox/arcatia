@@ -51,8 +51,9 @@ func (e *Engine) PauseRendering() {
 
 	rl.DrawTexture(e.Player.PausescreenSprite, 0, 0, rl.White)
 
-	rl.DrawText("[Enter] to Play", int32(rl.GetScreenWidth())/2-150, int32(rl.GetScreenHeight())/2-40, 40, rl.RayWhite)
-	rl.DrawText("[Esc] to Quit", int32(rl.GetScreenWidth())/2-150, int32(rl.GetScreenHeight())/2+100-40, 40, rl.RayWhite)
+	rl.DrawText("[Enter] to Resume", int32(rl.GetScreenWidth())/2-150, int32(rl.GetScreenHeight())/2-40, 40, rl.RayWhite)
+	rl.DrawText("[R] to Restart", int32(rl.GetScreenWidth())/2-150, int32(rl.GetScreenHeight())/2+100-40, 40, rl.RayWhite)
+	rl.DrawText("[Esc] to Quit", int32(rl.GetScreenWidth())/2-150, int32(rl.GetScreenHeight())/2+200-40, 40, rl.RayWhite)
 
 }
 
