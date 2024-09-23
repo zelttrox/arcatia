@@ -39,7 +39,7 @@ func (m *Monster) ToString() {
 
 var CurrentFrame int
 var frameCount int
-var speed int = 5
+var speed int = 50
 
 func (m Monster) UpdateAnimation() {
 	if frameCount >= speed {
