@@ -13,7 +13,7 @@ func (e *Engine) HomeLogic() {
 
 	//Musique
 	if !rl.IsMusicStreamPlaying(e.Music) {
-		e.Music = rl.LoadMusicStream("sounds/music/OSC-Ambient-Time-08-Egress.mp3")
+		e.Music = rl.LoadMusicStream("sounds/music/Meow.mp3")
 		rl.PlayMusicStream(e.Music)
 	}
 	rl.UpdateMusicStream(e.Music)
@@ -91,7 +91,7 @@ func (e *Engine) InGameLogic() {
 
 	//Musique
 	if !rl.IsMusicStreamPlaying(e.Music) {
-		e.Music = rl.LoadMusicStream("sounds/music/OSC-Ambient-Time-07-Simon_s-In-There-Somewhere.mp3")
+		e.Music = rl.LoadMusicStream("sounds/music/What_Was_I_Made_For.mp3")
 		rl.PlayMusicStream(e.Music)
 	}
 	rl.UpdateMusicStream(e.Music)
@@ -142,7 +142,7 @@ func (e *Engine) MonsterCollisions() {
 				if !e.Player.IsAlive {
 					e.StateEngine = GAMEOVER
 				}
-				if monster.Name == "Boss" && monster.IsAlive == false {
+				if monster.Name == "Boss" && !monster.IsAlive {
 					e.StateEngine = WIN
 				}
 			}

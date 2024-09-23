@@ -46,12 +46,14 @@ func (e *Engine) InitEntities() {
 		FrameHeight: 32,
 		MaxFrames:   10,
 
-		SpriteIdle:       rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet.png"),
-		SpriteRun:        []rl.Texture2D{rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Right.png"), rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Left.png")},
-		HomescreenSprite: rl.LoadTexture("textures/menu/homescreen.png"),
-		GameoverSprite:   rl.LoadTexture("textures/menu/gameover.png"),
-		GoodGameSprite:   rl.LoadTexture("textures/menu/goodgame.jpg"),
+		SpriteIdle:        rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet.png"),
+		SpriteRun:         []rl.Texture2D{rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Right.png"), rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Left.png")},
+		HomescreenSprite:  rl.LoadTexture("textures/menu/homescreen.png"),
+		GameoverSprite:    rl.LoadTexture("textures/menu/gameover.png"),
+		GoodGameSprite:    rl.LoadTexture("textures/menu/goodgame.jpg"),
+		PausescreenSprite: rl.LoadTexture("textures/menu/pausescreen.png"),
 	}
+
 	e.Monsters = append(e.Monsters, entity.Monster{
 		Name:      "distributeur",
 		Position:  rl.Vector2{X: 240, Y: 460},
@@ -229,6 +231,23 @@ func (e *Engine) InitEntities() {
 	// 	MaxFrames:   10,
 	// })
 
+	e.NPC = entity.NPC{
+		Position: rl.Vector2{X: 300, Y: 153},
+		Health:   100,
+		Money:    1000,
+		Damage:   0,
+		Speed:    0,
+
+		IsAlive: true,
+
+		IsAnimated:  true,
+		FrameWidth:  32,
+		FrameHeight: 32,
+		MaxFrames:   10,
+
+		SpriteIdle: rl.LoadTexture("textures/entities/gobby/Orange_Head_Idle-Sheet.png"),
+	}
+
 	e.Player.Money = 0
 }
 
@@ -244,7 +263,7 @@ func (e *Engine) InitCamera() {
 func (e *Engine) InitMusic() {
 	rl.InitAudioDevice()
 
-	e.Music = rl.LoadMusicStream("sounds/music/What_Was_I_Made_For.mp3")
+	e.Music = rl.LoadMusicStream("sounds/music/What Was I Made For (Sad Cat Version).mp3")
 
 	rl.PlayMusicStream(e.Music)
 }

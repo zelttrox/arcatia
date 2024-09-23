@@ -29,6 +29,7 @@ type Player struct {
 	SpriteRun  []rl.Texture2D
 
 	HomescreenSprite rl.Texture2D
+	PausescreenSprite rl.Texture2D
 	GameoverSprite   rl.Texture2D
 	GoodGameSprite rl.Texture2D
 }

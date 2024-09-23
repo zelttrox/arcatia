@@ -28,8 +28,10 @@ var SALLE int = 1
 type Engine struct {
 	Player   entity.Player
 	Monsters []entity.Monster
+	NPC      entity.NPC
 
 	Music       rl.Music
+	DeathMusic  rl.Music
 	MusicVolume float32
 
 	Sprites map[string]rl.Texture2D

@@ -23,7 +23,7 @@ func (e *Engine) GameOverRendering() {
 
 }
 func (e *Engine) GoodGameRendering() {
-	rl.DrawTexture(e.Player.GoodGameSprite, 0,0, rl.White)
+	rl.DrawTexture(e.Player.GoodGameSprite, 0, 0, rl.White)
 }
 
 func (e *Engine) InGameRendering() {
@@ -49,17 +49,14 @@ func (e *Engine) InGameRendering() {
 
 func (e *Engine) PauseRendering() {
 
-	rl.ClearBackground(rl.Red)
-	rl.DrawText("Paused", int32(rl.GetScreenWidth())/2-rl.MeasureText("Paused", 40)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
-	rl.DrawText("[P] or [Esc] to resume", int32(rl.GetScreenWidth())-rl.MeasureText("[P] or [Esc] to resume", 20), int32(rl.GetScreenHeight()), 20, rl.RayWhite)
-	rl.DrawText("[R] to restart", int32(rl.GetScreenWidth())/2-rl.MeasureText("[R] to restart", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
-	rl.DrawText("[Q]/[A] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+200, 20, rl.RayWhite)
+	rl.DrawTexture(e.Player.PausescreenSprite, 0, 0, rl.White)
 
-	//rl.EndDrawing()
+	rl.DrawText("[Enter] to Play", int32(rl.GetScreenWidth())/2-150, int32(rl.GetScreenHeight())/2-40, 40, rl.RayWhite)
+	rl.DrawText("[Esc] to Quit", int32(rl.GetScreenWidth())/2-150, int32(rl.GetScreenHeight())/2+100-40, 40, rl.RayWhite)
+
 }
 
 func (e *Engine) RenderPlayer() {
-
 
 	if e.Player.IsRunning {
 		e.Player.PlayerAnimation()
@@ -82,7 +79,7 @@ func (e *Engine) RenderMonsters() {
 
 				rl.DrawText(
 					"[E] Food(+Heal) or [R] Drink(+Damage)",
-					int32(monster.Position.X)-25, 
+					int32(monster.Position.X)-25,
 					int32(monster.Position.Y)-10,
 					int32(1),
 					rl.DarkBrown,
@@ -90,6 +87,12 @@ func (e *Engine) RenderMonsters() {
 			}
 		}
 	}
+}
+
+func (e *Engine) RenderNPC() {
+
+	e.NPC.NPCIdle()
+	e.NPC.NPCDraw()
 }
 
 func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
