@@ -35,6 +35,7 @@ func (e *Engine) InGameRendering() {
 
 	e.RenderMonsters()
 	e.RenderPlayer()
+	e.RenderNPC()
 	e.RenderHealth()
 
 	rl.EndMode2D() // On finit le rendu camera
@@ -119,7 +120,6 @@ func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
 }
 
 func (e Engine) RenderHealth() {
-	rl.BeginMode2D(e.Camera)
 
 	for _, monster := range e.Monsters {
 		if !(monster.Name == "distributeur") {
@@ -130,5 +130,4 @@ func (e Engine) RenderHealth() {
 		}
 	}
 
-	rl.EndMode2D()
 }
