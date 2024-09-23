@@ -60,7 +60,7 @@ func (m *Monster) Draw() {
 	}
 	position := rl.Rectangle{
 		X: m.Position.X + 20, Y: m.Position.Y + 10,
-		Width: float32(m.FrameWidth), Height: float32(m.FrameHeight),
+		Width: float32(m.FrameWidth) - 20, Height: float32(m.FrameHeight) - 20,
 	}
 	rl.DrawTexturePro(m.Sprite, frameRec, position, rl.Vector2{}, 0, rl.White)
 }

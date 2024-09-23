@@ -74,14 +74,14 @@ func (e *Engine) InitEntities() {
 	})
 	e.Monsters = append(e.Monsters, entity.Monster{
 		Name:      "chien",
-		Position:  rl.Vector2{X: 212, Y: 20},
+		Position:  rl.Vector2{X: 310, Y: 48},
 		Health:    50,
 		MaxHealth: 50,
 		Damage:    10,
 		Loot:      []item.Item{},
 		Worth:     200,
 		Speed:     2,
-		Origine:   rl.Vector2{X: 212, Y: 20},
+		Origine:   rl.Vector2{X: 310, Y: 48},
 
 		IsAlive: true,
 		Sprite:  rl.LoadTexture("textures/entities/dog/GoldenIdle.png"),
@@ -92,15 +92,15 @@ func (e *Engine) InitEntities() {
 		MaxFrames:   6,
 	})
 	e.Monsters = append(e.Monsters, entity.Monster{
-		Name:      "Mouse",
-		Position:  rl.Vector2{X: 300, Y: 500},
+		Name:      "Mouse1",
+		Position:  rl.Vector2{X: 42, Y: 572},
 		Health:    25,
 		MaxHealth: 25,
 		Damage:    2,
 		Loot:      []item.Item{},
 		Worth:     40,
 		Speed:     2,
-		Origine:   rl.Vector2{X: 300, Y: 500},
+		Origine:   rl.Vector2{X: 42, Y: 572},
 
 		IsAlive: true,
 
@@ -112,15 +112,15 @@ func (e *Engine) InitEntities() {
 		Sprite: rl.LoadTexture("textures/entities/mice/rat_1.png"),
 	})
 	e.Monsters = append(e.Monsters, entity.Monster{
-		Name:      "Mouse",
-		Position:  rl.Vector2{X: 310, Y: 510},
+		Name:      "Mouse2",
+		Position:  rl.Vector2{X: 374, Y: 596},
 		Health:    25,
 		MaxHealth: 25,
 		Damage:    2,
 		Loot:      []item.Item{},
 		Worth:     40,
 		Speed:     2,
-		Origine:   rl.Vector2{X: 310, Y: 510},
+		Origine:   rl.Vector2{X: 374, Y: 596},
 
 		IsAlive: true,
 
@@ -132,15 +132,15 @@ func (e *Engine) InitEntities() {
 		Sprite: rl.LoadTexture("textures/entities/mice/rat_1.png"),
 	})
 	e.Monsters = append(e.Monsters, entity.Monster{
-		Name:      "Mouse",
-		Position:  rl.Vector2{X: 290, Y: 490},
+		Name:      "Mouse3",
+		Position:  rl.Vector2{X: 386, Y: 510},
 		Health:    25,
 		MaxHealth: 25,
 		Damage:    2,
 		Loot:      []item.Item{},
 		Worth:     40,
 		Speed:     2,
-		Origine:   rl.Vector2{X: 290, Y: 490},
+		Origine:   rl.Vector2{X: 386, Y: 510},
 
 		IsAlive: true,
 
@@ -152,15 +152,15 @@ func (e *Engine) InitEntities() {
 		Sprite: rl.LoadTexture("textures/entities/mice/rat_1.png"),
 	})
 	e.Monsters = append(e.Monsters, entity.Monster{
-		Name:      "Mouse",
-		Position:  rl.Vector2{X: 320, Y: 520},
+		Name:      "Mouse4",
+		Position:  rl.Vector2{X: 282, Y: 590},
 		Health:    25,
 		MaxHealth: 25,
 		Damage:    2,
 		Loot:      []item.Item{},
 		Worth:     40,
 		Speed:     2,
-		Origine:   rl.Vector2{X: 320, Y: 520},
+		Origine:   rl.Vector2{X: 282, Y: 590},
 
 		IsAlive: true,
 
@@ -172,15 +172,15 @@ func (e *Engine) InitEntities() {
 		Sprite: rl.LoadTexture("textures/entities/mice/rat_1.png"),
 	})
 	e.Monsters = append(e.Monsters, entity.Monster{
-		Name:      "Mouse",
-		Position:  rl.Vector2{X: 330, Y: 530},
+		Name:      "Mouse5",
+		Position:  rl.Vector2{X: 42, Y: 488},
 		Health:    25,
 		MaxHealth: 25,
 		Damage:    2,
 		Loot:      []item.Item{},
 		Worth:     40,
 		Speed:     2,
-		Origine:   rl.Vector2{X: 323, Y: 523},
+		Origine:   rl.Vector2{X: 42, Y: 488},
 
 		IsAlive: true,
 
@@ -210,26 +210,6 @@ func (e *Engine) InitEntities() {
 		FrameHeight: 64,
 		MaxFrames:   6,
 	})
-
-	// e.Monsters = append(e.Monsters, entity.Monster{
-	// 	Name:      "chien",
-	// 	Position:  rl.Vector2{X: 212, Y: 20},
-	// 	Health:    100,
-	// 	MaxHealth: 100,
-	// 	Damage:    15,
-	// 	Loot:      []item.Item{},
-	// 	Worth:     200,
-	// 	Speed:     1,
-	// 	Origine:   rl.Vector2{X: 212, Y: 20},
-
-	// 	IsAlive: true,
-	// 	Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
-
-	// 	IsAnimated:  true,
-	// 	FrameWidth:  100,
-	// 	FrameHeight: 100,
-	// 	MaxFrames:   10,
-	// })
 
 	e.NPC = entity.NPC{
 		Position: rl.Vector2{X: 300, Y: 153},
