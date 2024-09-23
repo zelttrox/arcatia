@@ -33,6 +33,9 @@ type Engine struct {
 	Music       rl.Music
 	DeathMusic  rl.Music
 	MusicVolume float32
+	ShowFPS     bool
+	Godmode     bool
+	SpeedBoost  bool
 
 	Sprites map[string]rl.Texture2D
 

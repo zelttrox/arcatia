@@ -41,11 +41,14 @@ func (e *Engine) InGameRendering() {
 	rl.EndMode2D() // On finit le rendu camera
 
 	// Ecriture fixe (car pas affectée par le mode camera)
-	rl.DrawFPS(int32(rl.GetScreenWidth()/2+600), int32(rl.GetScreenHeight()/2-350))
+	if e.ShowFPS {
+		rl.DrawFPS(int32(rl.GetScreenWidth()/2+600), int32(rl.GetScreenHeight()/2-350))
+	}
 	rl.DrawRectangle(int32(rl.GetScreenWidth()/2-650), int32(rl.GetScreenHeight()/2-350), 200, 25, rl.DarkBrown)
 	rl.DrawRectangle(int32(rl.GetScreenWidth()/2-650), int32(rl.GetScreenHeight()/2-350), int32(e.Player.Health)*2, 25, rl.Red)
 	rl.DrawText("[P] or [Esc] to Pause", int32(rl.GetScreenWidth())/2-550-rl.MeasureText("[P] or [Esc] to Pause", 20)/2, int32(rl.GetScreenHeight())/2+350, 20, rl.RayWhite)
 	rl.DrawText("MONEY : "+strconv.Itoa(e.Player.Money), int32(rl.GetScreenWidth()/2-650), int32(rl.GetScreenHeight())/2-300, 25, rl.RayWhite)
+	rl.DrawText("DMG : "+strconv.Itoa(e.Player.Damage), int32(rl.GetScreenWidth()/2-650), int32(rl.GetScreenHeight())/2-300+40, 25, rl.RayWhite)
 }
 
 func (e *Engine) PauseRendering() {

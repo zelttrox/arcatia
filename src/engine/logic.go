@@ -30,7 +30,7 @@ func (e *Engine) HomeLogic() {
 	}
 }
 
-func (e *Engine) reset() {
+func (e *Engine) Reset() {
 	SALLE = 1
 	e.Player.Health = 100
 	e.Player.Money = 300
@@ -47,7 +47,7 @@ func (e *Engine) reset() {
 }
 func (e *Engine) GameOverLogic() {
 	if rl.IsKeyPressed(rl.KeyEnter) {
-		e.reset()
+		e.Reset()
 	}
 	if rl.IsKeyPressed(rl.KeyEscape) {
 		e.IsRunning = false
@@ -55,7 +55,7 @@ func (e *Engine) GameOverLogic() {
 }
 func (e *Engine) GoodGameLogic() {
 	if rl.IsKeyPressed(rl.KeyEnter) {
-		e.reset()
+		e.Reset()
 	}
 	if rl.IsKeyPressed(rl.KeyEscape) {
 		e.IsRunning = false
@@ -72,6 +72,13 @@ func (e *Engine) SettingsLogic() {
 }
 
 func (e *Engine) InGameLogic() {
+
+	if e.Godmode {
+		e.Player.Health = 100
+	}
+	if e.SpeedBoost {
+		e.Player.Speed = 6
+	}
 
 	e.Player.IsRunning = false
 
@@ -165,7 +172,7 @@ func (e *Engine) PauseLogic() {
 		e.StateEngine = INGAME
 	}
 	if rl.IsKeyPressed(rl.KeyR) {
-		e.reset()
+		e.Reset()
 	}
 
 	//Musique

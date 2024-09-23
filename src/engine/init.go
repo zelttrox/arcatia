@@ -13,7 +13,6 @@ const (
 )
 
 func (e *Engine) Init() {
-	rl.InitWindow(ScreenWidth, ScreenHeight, "Meow, Meow, Meow Meow")
 
 	// Initialisation des variables de l'engine
 	e.IsRunning = true
@@ -198,7 +197,7 @@ func (e *Engine) InitEntities() {
 		MaxHealth: 200,
 		Damage:    25,
 		Loot:      []item.Item{},
-		Worth:     12,
+		Worth:     800,
 		Speed:     2,
 		Origine:   rl.Vector2{X: 360, Y: 1030},
 
