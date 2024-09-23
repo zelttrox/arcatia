@@ -32,7 +32,7 @@ func (e *Engine) InGameRendering() {
 	rl.BeginMode2D(e.Camera) // On commence le rendu camera
 
 	e.RenderMap()
-
+	e.Inventory()
 	e.RenderMonsters()
 	e.RenderPlayer()
 	e.RenderNPC()
@@ -125,9 +125,16 @@ func (e Engine) RenderHealth() {
 		if !(monster.Name == "distributeur") {
 			if monster.IsAlive {
 				rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32(50), 5, rl.DarkBlue)
-				rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32((monster.Health*50)/monster.MaxHealth), 5, rl.Blue)
+				rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32((monster.Health*30)/monster.MaxHealth), 5, rl.Blue)
 			}
 		}
 	}
 
+}
+func (e *Engine) Inventory() {
+	i := 0
+	for _, item := range e.Player.Inventory {
+		rl.DrawTexture(item.Sprite, int32(e.Player.Position.X)-150, int32(int(e.Player.Position.Y)+((-60)+(i*20))), rl.LightGray)
+		i++
+	}
 }

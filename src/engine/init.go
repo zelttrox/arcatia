@@ -227,8 +227,21 @@ func (e *Engine) InitEntities() {
 
 		SpriteIdle: rl.LoadTexture("textures/entities/gobby/Orange_Head_Idle-Sheet.png"),
 	}
+	e.Item = append(e.Item, item.Item{
+		Name:   "item1",
+		Sprite: rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Left.png"),
+	})
+	e.Item = append(e.Item, item.Item{
+		Name:   "item2",
+		Sprite: rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Right.png"),
+	})
+	e.Item = append(e.Item, item.Item{
+		Name:   "item1",
+		Sprite: rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Left.png"),
+	})
 
 	e.Player.Money = 0
+	e.Player.Inventory = append(e.Player.Inventory, e.Item...)
 }
 
 func (e *Engine) InitCamera() {
