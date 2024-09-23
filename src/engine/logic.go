@@ -79,7 +79,7 @@ func (e *Engine) InGameLogic() {
 
 	// Mouvement
 	// Camera
-	e.Camera.Target = rl.Vector2{X: e.Player.Position.X + 70, Y: e.Player.Position.Y + 70}
+	e.Camera.Target = rl.Vector2{X: e.Player.Position.X + 20, Y: e.Player.Position.Y + 20}
 	e.Camera.Offset = rl.Vector2{X: ScreenWidth / 2, Y: ScreenHeight / 2}
 
 	// Menus
