@@ -127,8 +127,16 @@ func (e Engine) RenderHealth() {
 	for _, monster := range e.Monsters {
 		if !(monster.Name == "distributeur") {
 			if monster.IsAlive {
-				rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32(50), 5, rl.DarkBlue)
-				rl.DrawRectangle(int32(monster.Position.X)+45, int32(monster.Position.Y)+40, int32((monster.Health*30)/monster.MaxHealth), 5, rl.Blue)
+				if monster.Name == ("Mouse1") || monster.Name == ("Mouse2") || monster.Name == ("Mouse3") || monster.Name == ("Mouse4") ||
+					monster.Name == ("Mouse5") {
+					rl.DrawRectangle(int32(monster.Position.X)+15, int32(monster.Position.Y)+10, int32(20), 2, rl.DarkBrown)
+					rl.DrawRectangle(int32(monster.Position.X)+15, int32(monster.Position.Y)+10, int32((monster.Health*20)/monster.MaxHealth), 2, rl.Red)
+				}
+				if monster.Name == "chien" {
+					rl.DrawRectangle(int32(monster.Position.X)+25, int32(monster.Position.Y)+20, int32(30), 4, rl.DarkBrown)
+					rl.DrawRectangle(int32(monster.Position.X)+25, int32(monster.Position.Y)+20, int32((monster.Health*30)/monster.MaxHealth), 4, rl.Red)
+
+				}
 			}
 		}
 	}
