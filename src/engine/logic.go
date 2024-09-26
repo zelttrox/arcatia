@@ -166,7 +166,7 @@ func (e *Engine) NPCCollisions() {
 			e.NPC.Position.X < e.Player.Position.X+40 &&
 			e.NPC.Position.Y > e.Player.Position.Y-40 &&
 			e.NPC.Position.Y < e.Player.Position.Y+40 {
-			e.RenderDialog2(int32(e.Player.Position.X), int32(e.Player.Position.Y))
+			e.RenderDialog2()
 		}
 	}
 }

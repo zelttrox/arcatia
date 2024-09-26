@@ -41,6 +41,8 @@ type Engine struct {
 	CipherDialogue bool
 	BinDialogue    bool
 
+	Dialogue string
+
 	Sprites map[string]rl.Texture2D
 
 	Camera rl.Camera2D

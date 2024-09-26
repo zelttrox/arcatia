@@ -145,17 +145,37 @@ func (e Engine) RenderHealth() {
 func (e *Engine) Inventory() {
 	i := 0
 	for _, item := range e.Player.Inventory {
-		rl.DrawTexture(item.Sprite, int32(e.Player.Position.X)-150, int32(int(e.Player.Position.Y)+((-60)+(i*20))), rl.LightGray)
+		rl.DrawTexture(item.Sprite, int32(e.Player.Position.X)-150, int32(int(e.Player.Position.Y)+((-35)+(i*25))), rl.LightGray)
 		i++
 	}
 }
 
-func (e *Engine) RenderDialog2(x int32, y int32) {
-	rl.DrawText(
-		"Tom, my sweet litle kitty!",
-		x-25,
-		y-10,
-		40,
-		rl.White,
-	)
+func (e *Engine) RenderDialog2() {
+	e.Dialogue = "Tom, my sweet litle kitty!"
+	rendu := ""
+	if e.CipherDialogue {
+		newphrase := []rune(e.Dialogue)
+		for i := 0; i < len(newphrase); i++ {
+			newphrase[i]++
+			rendu += string(newphrase[i])
+		}
+		rl.DrawText(rendu, int32(e.NPC.Position.X)+30, int32(e.NPC.Position.Y)+10, 40, rl.White)
+	} else if e.BinDialogue {
+		// faites pas chier c est relou le binaire
+		// newphrase := []rune(e.Dialogue)
+		// for i := 0; i < len(newphrase); i++ {
+		// 	newphrase[i] = newphrase[i]
+		// 	rendu += string(newphrase[i])
+		// }
+	} else {
+		rl.BeginMode2D(e.Camera)
+		rl.DrawText(
+			e.Dialogue,
+			int32(e.NPC.Position.X)-25,
+			int32(e.NPC.Position.Y)-20,
+			10,
+			rl.White,
+		)
+		rl.EndMode2D()
+	}
 }

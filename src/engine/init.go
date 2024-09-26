@@ -28,15 +28,15 @@ func (e *Engine) Init() {
 func (e *Engine) InitEntities() {
 	e.Item = append(e.Item, item.Item{
 		Name:   "item1",
-		Sprite: rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Left.png"),
+		Sprite: rl.LoadTexture("textures/item/JerryTail.png"),
 	})
 	e.Item = append(e.Item, item.Item{
 		Name:   "item2",
-		Sprite: rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Right.png"),
+		Sprite: rl.LoadTexture("textures/item/YannBone.png"),
 	})
 	e.Item = append(e.Item, item.Item{
-		Name:   "item1",
-		Sprite: rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Left.png"),
+		Name:   "item3",
+		Sprite: rl.LoadTexture("textures/item/LeoBone.png"),
 	})
 
 	e.Player = entity.Player{
@@ -89,7 +89,7 @@ func (e *Engine) InitEntities() {
 		Health:    50,
 		MaxHealth: 50,
 		Damage:    10,
-		Loot:      []item.Item{},
+		Loot:      []item.Item{e.Item[1]},
 		Worth:     200,
 		Speed:     2,
 		Origine:   rl.Vector2{X: 310, Y: 48},
@@ -108,7 +108,7 @@ func (e *Engine) InitEntities() {
 		Health:    25,
 		MaxHealth: 25,
 		Damage:    2,
-		Loot:      []item.Item{},
+		Loot:      []item.Item{e.Item[0]},
 		Worth:     40,
 		Speed:     2,
 		Origine:   rl.Vector2{X: 42, Y: 572},
@@ -208,7 +208,7 @@ func (e *Engine) InitEntities() {
 		Health:    200,
 		MaxHealth: 200,
 		Damage:    25,
-		Loot:      []item.Item{},
+		Loot:      []item.Item{e.Item[2]},
 		Worth:     800,
 		Speed:     2,
 		Origine:   rl.Vector2{X: 360, Y: 1030},
@@ -240,7 +240,7 @@ func (e *Engine) InitEntities() {
 	}
 
 	e.Player.Money = 0
-	e.Player.Inventory = append(e.Player.Inventory, e.Item...)
+	// e.Player.Inventory = append(e.Player.Inventory, e.Item...)
 }
 
 func (e *Engine) InitCamera() {
