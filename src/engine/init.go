@@ -13,7 +13,6 @@ const (
 )
 
 func (e *Engine) Init() {
-	rl.InitWindow(ScreenWidth, ScreenHeight, "Meow, Meow, Meow Meow")
 
 	// Initialisation des variables de l'engine
 	e.IsRunning = true
@@ -53,18 +52,6 @@ func (e *Engine) InitEntities() {
 		GoodGameSprite:    rl.LoadTexture("textures/menu/goodgame.jpg"),
 		PausescreenSprite: rl.LoadTexture("textures/menu/pausescreen.png"),
 	}
-	e.Item = append(e.Item, item.Item{
-		Name:   "item1",
-		Sprite: rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Left.png"),
-	})
-	e.Item = append(e.Item, item.Item{
-		Name:   "item2",
-		Sprite: rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Right.png"),
-	})
-	e.Item = append(e.Item, item.Item{
-		Name:   "item1",
-		Sprite: rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Left.png"),
-	})
 
 	e.Monsters = append(e.Monsters, entity.Monster{
 		Name:      "distributeur",
@@ -109,7 +96,7 @@ func (e *Engine) InitEntities() {
 		Health:    25,
 		MaxHealth: 25,
 		Damage:    2,
-		Loot:      []item.Item{e.Item[0]},
+		Loot:      []item.Item{},
 		Worth:     40,
 		Speed:     2,
 		Origine:   rl.Vector2{X: 42, Y: 572},
@@ -210,7 +197,7 @@ func (e *Engine) InitEntities() {
 		MaxHealth: 200,
 		Damage:    25,
 		Loot:      []item.Item{},
-		Worth:     12,
+		Worth:     800,
 		Speed:     2,
 		Origine:   rl.Vector2{X: 360, Y: 1030},
 
@@ -239,6 +226,18 @@ func (e *Engine) InitEntities() {
 
 		SpriteIdle: rl.LoadTexture("textures/entities/gobby/Orange_Head_Idle-Sheet.png"),
 	}
+	e.Item = append(e.Item, item.Item{
+		Name:   "item1",
+		Sprite: rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Left.png"),
+	})
+	e.Item = append(e.Item, item.Item{
+		Name:   "item2",
+		Sprite: rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Right.png"),
+	})
+	e.Item = append(e.Item, item.Item{
+		Name:   "item1",
+		Sprite: rl.LoadTexture("textures/entities/cat/2_Cat_Run-Sheet_Left.png"),
+	})
 
 	e.Player.Money = 0
 	e.Player.Inventory = append(e.Player.Inventory, e.Item...)
