@@ -17,6 +17,8 @@ func main() {
 	argHelp := flag.Bool("h", false, "Help")
 	argGodmode := flag.Bool("gm", false, "Godmode")
 	argSpeeedBoost := flag.Bool("spd", false, "Speed boost")
+	argCipher := flag.Bool("cipher", false, "Cipher")
+	argBin := flag.Bool("bin", false, "Binary")
 	flag.Parse()
 
 	if *argHelp {
@@ -26,6 +28,8 @@ func main() {
 		fmt.Println("-fps to Show FPS")
 		fmt.Println("-gm for Godmode")
 		fmt.Println("-spd for Speed boost")
+		fmt.Println("-cipher for Cipher Dialogues")
+		fmt.Println("-bin for Binary Dialogues")
 	} else {
 
 		if *argFullscreen {
@@ -48,6 +52,12 @@ func main() {
 		}
 		if *argSpeeedBoost {
 			e.SpeedBoost = true
+		}
+		if *argCipher {
+			e.CipherDialogue = true
+		}
+		if *argBin {
+			e.BinDialogue = true
 		}
 
 		e.Run()

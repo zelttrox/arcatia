@@ -110,6 +110,7 @@ func (e *Engine) InGameLogic() {
 func (e *Engine) CheckCollisions() {
 	e.ChasePlayer()
 	e.MonsterCollisions()
+	e.NPCCollisions()
 }
 
 func (e *Engine) MonsterCollisions() {
@@ -155,6 +156,17 @@ func (e *Engine) MonsterCollisions() {
 				}
 			}
 
+		}
+	}
+}
+
+func (e *Engine) NPCCollisions() {
+	if e.NPC.IsAlive {
+		if e.NPC.Position.X > e.Player.Position.X-40 &&
+			e.NPC.Position.X < e.Player.Position.X+40 &&
+			e.NPC.Position.Y > e.Player.Position.Y-40 &&
+			e.NPC.Position.Y < e.Player.Position.Y+40 {
+			e.RenderDialog2(int32(e.Player.Position.X), int32(e.Player.Position.Y))
 		}
 	}
 }

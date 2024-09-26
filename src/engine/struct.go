@@ -32,12 +32,14 @@ type Engine struct {
 	NPC      entity.NPC
 	Item     []item.Item
 
-	Music       rl.Music
-	DeathMusic  rl.Music
-	MusicVolume float32
-	ShowFPS     bool
-	Godmode     bool
-	SpeedBoost  bool
+	Music          rl.Music
+	DeathMusic     rl.Music
+	MusicVolume    float32
+	ShowFPS        bool
+	Godmode        bool
+	SpeedBoost     bool
+	CipherDialogue bool
+	BinDialogue    bool
 
 	Sprites map[string]rl.Texture2D
 
