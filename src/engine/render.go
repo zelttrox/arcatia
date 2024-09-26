@@ -149,3 +149,13 @@ func (e *Engine) Inventory() {
 		i++
 	}
 }
+
+func (e *Engine) RenderDialog2(x int32, y int32) {
+	rl.DrawText(
+		"Tom, my sweet litle kitty!",
+		x-25,
+		y-10,
+		40,
+		rl.White,
+	)
+}
