@@ -132,7 +132,7 @@ func (e Engine) RenderHealth() {
 					rl.DrawRectangle(int32(monster.Position.X)+15, int32(monster.Position.Y)+10, int32(20), 2, rl.DarkBrown)
 					rl.DrawRectangle(int32(monster.Position.X)+15, int32(monster.Position.Y)+10, int32((monster.Health*20)/monster.MaxHealth), 2, rl.Red)
 				}
-				if monster.Name == "chien" {
+				if monster.Name == "chien" || monster.Name == "Boss" {
 					rl.DrawRectangle(int32(monster.Position.X)+25, int32(monster.Position.Y)+20, int32(30), 4, rl.DarkBrown)
 					rl.DrawRectangle(int32(monster.Position.X)+25, int32(monster.Position.Y)+20, int32((monster.Health*30)/monster.MaxHealth), 4, rl.Red)
 
