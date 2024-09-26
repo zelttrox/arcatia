@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"main/src/entity"
 	"main/src/fight"
+	"main/src/item"
 	"math"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
@@ -34,6 +35,7 @@ func (e *Engine) Reset() {
 	SALLE = 1
 	e.Player.Health = 100
 	e.Player.Money = 300
+	e.Player.Inventory = []item.Item{}
 	e.Player.IsAlive = true
 	e.Player.Position = rl.Vector2{X: 128, Y: 180}
 	for i := range e.Monsters {
