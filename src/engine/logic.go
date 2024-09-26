@@ -46,6 +46,7 @@ func (e *Engine) Reset() {
 	e.StateMenu = PLAY
 	e.StateEngine = INGAME
 }
+
 func (e *Engine) GameOverLogic() {
 	if rl.IsKeyPressed(rl.KeyEnter) {
 		e.Reset()
@@ -54,6 +55,7 @@ func (e *Engine) GameOverLogic() {
 		e.IsRunning = false
 	}
 }
+
 func (e *Engine) GoodGameLogic() {
 	if rl.IsKeyPressed(rl.KeyEnter) {
 		e.Reset()
