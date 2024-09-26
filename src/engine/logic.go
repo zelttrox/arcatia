@@ -1,7 +1,6 @@
 package engine
 
 import (
-	"fmt"
 	"main/src/entity"
 	"main/src/fight"
 	"main/src/item"
@@ -107,8 +106,6 @@ func (e *Engine) InGameLogic() {
 }
 
 func (e *Engine) CheckCollisions() {
-	fmt.Println(e.Player.Position)
-	fmt.Println(e.Player.Damage)
 	e.ChasePlayer()
 	e.MonsterCollisions()
 }
