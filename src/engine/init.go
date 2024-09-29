@@ -122,6 +122,8 @@ func (e *Engine) InitEntities() {
 
 		IsAlive: true,
 
+		SoundPlayed: false,
+
 		IsAnimated:  true,
 		FrameWidth:  32,
 		FrameHeight: 32,
@@ -211,17 +213,19 @@ func (e *Engine) InitEntities() {
 	})
 	e.Monsters = append(e.Monsters, entity.Monster{
 		Name:      "Boss",
-		Position:  rl.Vector2{X: 360, Y: 1030},
+		Position:  rl.Vector2{X: 380, Y: 1045},
 		Health:    200,
 		MaxHealth: 200,
 		Damage:    25,
 		Loot:      []item.Item{e.Item[2]},
 		Worth:     800,
 		Speed:     2,
-		Origine:   rl.Vector2{X: 360, Y: 1030},
+		Origine:   rl.Vector2{X: 380, Y: 1045},
 
-		IsAlive: true,
+		IsAlive: false,
 		Sprite:  rl.LoadTexture("textures/entities/dog/RottweilerIdle.png"),
+
+		SoundPlayed: false,
 
 		IsAnimated:  true,
 		FrameWidth:  64,

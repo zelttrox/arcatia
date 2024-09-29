@@ -172,11 +172,14 @@ func (e *Engine) MonsterCollisions() {
 func (e *Engine) PlaySound() {
 	for i := range e.Monsters {
 		monster := &e.Monsters[i]
-		if monster.Name == "Mouse1" {
+		if monster.Name == "Mouse1" && !monster.SoundPlayed {
 			rl.PlaySound(e.Player.MouseSound)
+			monster.SoundPlayed = true
 		}
-		if monster.Name == "Boss" {
+		if monster.Name == "Boss" && !monster.SoundPlayed {
+			rl.SetSoundVolume(e.Player.BossSound, 1.0)
 			rl.PlaySound(e.Player.BossSound)
+			monster.SoundPlayed = true
 			fmt.Println("Playing sound")
 		}
 	}

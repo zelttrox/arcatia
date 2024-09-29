@@ -23,6 +23,8 @@ type Monster struct {
 	Sprite  rl.Texture2D
 	Sprites []rl.Texture2D
 
+	SoundPlayed bool
+
 	IsAnimated  bool
 	FrameWidth  int
 	FrameHeight int

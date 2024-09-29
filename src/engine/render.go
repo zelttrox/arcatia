@@ -1,8 +1,8 @@
 package engine
 
 import (
-	"strconv"
 	"fmt"
+	"strconv"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -74,10 +74,18 @@ func (e *Engine) RenderPlayer() {
 }
 
 func (e *Engine) RenderMonsters() {
-	for _, monster := range e.Monsters {
+	for i := range e.Monsters {
+		monster := &e.Monsters[i]
+		if monster.Name == "Boss" {
+			if e.Player.Position.X <= 420 && e.Player.Position.X >= 330 &&
+				e.Player.Position.Y <= 1095 && e.Player.Position.Y >= 995 {
+				monster.IsAlive = true
+			}
+		}
 		if monster.IsAlive {
 			monster.UpdateAnimation()
 			monster.Draw()
+
 			if monster.Name == "distributeur" {
 				dialogBoxColor := rl.NewColor(200, 200, 185, 150)
 				rl.DrawRectangle(int32(monster.Position.X)-25, int32(monster.Position.Y)-10, 191, 9, dialogBoxColor)
