@@ -30,7 +30,7 @@ apt-get install libgl1-mesa-dev libxi-dev libxcursor-dev libxrandr-dev libxinera
 
 Installation de Arcatia :
 ```
-git clone https://github.com/zelttrox/gobking.git
+git clone https://github.com/zelttrox/arcatia.git
 ```
 
 Lancement du jeu :
