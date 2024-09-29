@@ -20,6 +20,10 @@ type Player struct {
 	Dir       int
 	HealCount int
 
+	NeverMet   bool
+	KilledMice bool
+	KilledBoss bool
+
 	IsAnimated  bool
 	FrameWidth  int
 	FrameHeight int
@@ -32,6 +36,10 @@ type Player struct {
 	PausescreenSprite rl.Texture2D
 	GameoverSprite    rl.Texture2D
 	GoodGameSprite    rl.Texture2D
+
+	MouseSound rl.Sound
+	DogSound   rl.Sound
+	BossSound  rl.Sound
 }
 
 func (p *Player) Attack(m *Monster) {

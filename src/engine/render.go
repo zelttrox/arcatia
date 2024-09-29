@@ -1,8 +1,8 @@
 package engine
 
 import (
-	"main/src/entity"
 	"strconv"
+	"fmt"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -100,28 +100,6 @@ func (e *Engine) RenderNPC() {
 	e.NPC.NPCDraw()
 }
 
-func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
-	rl.BeginMode2D(e.Camera)
-
-	dialogBoxColor := rl.NewColor(200, 200, 185, 150)
-
-	for _, monster := range e.Monsters {
-		if monster.IsAlive {
-			rl.DrawRectangle(int32(monster.Position.X), int32(monster.Position.Y), 200, 50, dialogBoxColor)
-
-			rl.DrawText(
-				sentence,
-				int32(450),
-				int32(300),
-				10,
-				rl.RayWhite,
-			)
-
-			rl.EndMode2D()
-		}
-	}
-}
-
 func (e Engine) RenderHealth() {
 
 	for _, monster := range e.Monsters {
@@ -150,23 +128,21 @@ func (e *Engine) Inventory() {
 	}
 }
 
-func (e *Engine) RenderDialog2() {
-	e.Dialogue = "Tom, my sweet litle kitty!"
-	rendu := ""
+func (e *Engine) RenderDialog(dia string) {
+	e.Dialogue = dia
+	cipher := ""
 	if e.CipherDialogue {
 		newphrase := []rune(e.Dialogue)
 		for i := 0; i < len(newphrase); i++ {
 			newphrase[i]++
-			rendu += string(newphrase[i])
+			cipher += string(newphrase[i])
 		}
-		rl.DrawText(rendu, int32(e.NPC.Position.X)+30, int32(e.NPC.Position.Y)+10, 40, rl.White)
+		rl.DrawText(cipher, int32(e.NPC.Position.X)+30, int32(e.NPC.Position.Y)+10, 40, rl.White)
 	} else if e.BinDialogue {
-		// faites pas chier c est relou le binaire
-		// newphrase := []rune(e.Dialogue)
-		// for i := 0; i < len(newphrase); i++ {
-		// 	newphrase[i] = newphrase[i]
-		// 	rendu += string(newphrase[i])
-		// }
+		for i := 0; i < len(e.Dialogue); i++ {
+			bin := fmt.Sprintf("%08b", e.Dialogue[i])
+			rl.DrawText(bin, int32(e.NPC.Position.X)+30, int32(e.NPC.Position.Y)+10, 40, rl.White)
+		}
 	} else {
 		rl.BeginMode2D(e.Camera)
 		rl.DrawText(

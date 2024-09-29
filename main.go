@@ -7,11 +7,12 @@ import (
 	"main/src/engine"
 	"net/http"
 	_ "net/http/pprof"
-
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 func main() {
+
+	// Gestion des arguments
 	argFPS := flag.Bool("fps", false, "Fullscreen mode")
 	argFullscreen := flag.Bool("fs", false, "Show FPS")
 	argHelp := flag.Bool("h", false, "Help")
@@ -21,6 +22,7 @@ func main() {
 	argBin := flag.Bool("bin", false, "Binary")
 	flag.Parse()
 
+	// Arg Help (-h)
 	if *argHelp {
 		fmt.Println("Args:")
 		fmt.Println("-h for Help")
@@ -32,6 +34,7 @@ func main() {
 		fmt.Println("-bin for Binary Dialogues")
 	} else {
 
+		// Arg Fullscreen (-fs)
 		if *argFullscreen {
 			rl.InitWindow(1920, 1080, "Fullscreen")
 		} else {

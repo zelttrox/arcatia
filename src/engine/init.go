@@ -52,6 +52,10 @@ func (e *Engine) InitEntities() {
 
 		HealCount: 10,
 
+		NeverMet:   true,
+		KilledMice: false,
+		KilledBoss: false,
+
 		IsAnimated:  true,
 		FrameWidth:  32,
 		FrameHeight: 32,
@@ -63,6 +67,9 @@ func (e *Engine) InitEntities() {
 		GameoverSprite:    rl.LoadTexture("textures/menu/gameover.png"),
 		GoodGameSprite:    rl.LoadTexture("textures/menu/goodgame.jpg"),
 		PausescreenSprite: rl.LoadTexture("textures/menu/pausescreen.png"),
+
+		MouseSound: rl.LoadSound("sounds/Mouse.wav"),
+		BossSound:  rl.LoadSound("sounds/Boss.wav"),
 	}
 
 	e.Monsters = append(e.Monsters, entity.Monster{
@@ -255,7 +262,9 @@ func (e *Engine) InitCamera() {
 func (e *Engine) InitMusic() {
 	rl.InitAudioDevice()
 
-	e.Music = rl.LoadMusicStream("sounds/music/What Was I Made For (Sad Cat Version).mp3")
+	e.Music = rl.LoadMusicStream("sounds/music/Meow.mp3")
+	e.MusicVolume = 0.01
 
+	rl.SetMusicVolume(e.Music, e.MusicVolume)
 	rl.PlayMusicStream(e.Music)
 }

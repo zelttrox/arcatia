@@ -1,7 +1,7 @@
 package engine
 
 import (
-	"main/src/entity"
+	"fmt"
 	"main/src/fight"
 	"main/src/item"
 	"math"
@@ -14,6 +14,7 @@ func (e *Engine) HomeLogic() {
 	//Musique
 	if !rl.IsMusicStreamPlaying(e.Music) {
 		e.Music = rl.LoadMusicStream("sounds/music/Meow.mp3")
+		rl.SetMusicVolume(e.Music, e.MusicVolume)
 		rl.PlayMusicStream(e.Music)
 	}
 	rl.UpdateMusicStream(e.Music)
@@ -101,7 +102,8 @@ func (e *Engine) InGameLogic() {
 
 	//Musique
 	if !rl.IsMusicStreamPlaying(e.Music) {
-		e.Music = rl.LoadMusicStream("sounds/music/What_Was_I_Made_For.mp3")
+		e.Music = rl.LoadMusicStream("sounds/music/Meow.mp3")
+		rl.SetMusicVolume(e.Music, e.MusicVolume)
 		rl.PlayMusicStream(e.Music)
 	}
 	rl.UpdateMusicStream(e.Music)
@@ -114,6 +116,9 @@ func (e *Engine) CheckCollisions() {
 }
 
 func (e *Engine) MonsterCollisions() {
+	if e.Player.Money < 0 {
+		e.Player.Money = 0
+	}
 	for i := range e.Monsters {
 		monster := &e.Monsters[i]
 		if monster.IsAlive {
@@ -121,9 +126,11 @@ func (e *Engine) MonsterCollisions() {
 				monster.Position.X < e.Player.Position.X+40 &&
 				monster.Position.Y > e.Player.Position.Y-40 &&
 				monster.Position.Y < e.Player.Position.Y+40 {
+				rl.PlaySound(e.Player.BossSound)
+				e.PlaySound()
 				if rl.IsKeyPressed(rl.KeyR) {
 					if monster.Name == "distributeur" && e.Player.Money >= 100 {
-						e.Player.Money -= 100
+						e.Player.Money -= 100 + (e.Player.Damage - 5)
 						e.Player.Damage += 3
 					}
 				}
@@ -131,10 +138,12 @@ func (e *Engine) MonsterCollisions() {
 					if monster.Name == "distributeur" && e.Player.Money >= 50 && e.Player.Health < 100 {
 						if e.Player.Health >= 85 {
 							e.Player.Health = 100
-							e.Player.Money -= 50
+							e.Player.Money -= 50 + e.Player.HealCount
+							e.Player.HealCount += 10
 						} else {
 							e.Player.Health += 15
-							e.Player.Money -= 50
+							e.Player.Money -= 50 + e.Player.HealCount
+							e.Player.HealCount += 10
 						}
 
 					} else {
@@ -160,19 +169,39 @@ func (e *Engine) MonsterCollisions() {
 	}
 }
 
+func (e *Engine) PlaySound() {
+	for i := range e.Monsters {
+		monster := &e.Monsters[i]
+		if monster.Name == "Mouse1" {
+			rl.PlaySound(e.Player.MouseSound)
+		}
+		if monster.Name == "Boss" {
+			rl.PlaySound(e.Player.BossSound)
+			fmt.Println("Playing sound")
+		}
+	}
+}
+
 func (e *Engine) NPCCollisions() {
 	if e.NPC.IsAlive {
 		if e.NPC.Position.X > e.Player.Position.X-40 &&
 			e.NPC.Position.X < e.Player.Position.X+40 &&
 			e.NPC.Position.Y > e.Player.Position.Y-40 &&
 			e.NPC.Position.Y < e.Player.Position.Y+40 {
-			e.RenderDialog2()
+			if e.Player.NeverMet {
+				e.RenderDialog("Tom, my sweet litle kitty!")
+				e.Player.NeverMet = false
+			}
+		} else if !e.Player.NeverMet && !e.Player.KilledMice {
+			e.RenderDialog("I need you to get rid of those \n mice in the kitchen.")
+		} else if e.Player.KilledMice {
+			e.RenderDialog("If only you could understand me.. I would tell you to get rid of the neighbor's dog..")
+		} else if e.Player.KilledBoss {
+			e.RenderDialog("You finally made this dog shut it! I love you so much!")
+		} else {
+			e.RenderDialog("I don't know why I am talking..")
 		}
 	}
-}
-
-func (e *Engine) NormalTalk(m entity.Monster, sentence string) {
-	e.RenderDialog(m, sentence)
 }
 
 func (e *Engine) PauseLogic() {
@@ -199,13 +228,12 @@ func (e *Engine) ChasePlayer() {
 		if !(monster.Name == "distributeur") {
 			distrel := math.Sqrt(math.Pow(float64(e.Player.Position.X)-float64(monster.Position.X), 2) + math.Pow(float64(e.Player.Position.Y)-float64(monster.Position.Y), 2))
 			if distrel <= 60 && distrel > 20 {
+				rl.PlaySound(e.Player.BossSound)
 				xrel := float64(e.Player.Position.X-monster.Position.X) / distrel
 				yrel := float64(e.Player.Position.Y-monster.Position.Y) / distrel
 				if float32(float64(xrel)*float64(monster.Speed)) < 0 {
-					//monster.Sprite = rl.LoadTexture("textures/entities/orc/Orc-Idle-Reverse.png")
 				}
 				if float32(float64(xrel)*float64(monster.Speed)) >= 0 {
-					//monster.Sprite = rl.LoadTexture("textures/entities/orc/Orc-Idle.png")
 				}
 				monster.Position.X += float32(float64(xrel) * float64(monster.Speed))
 				monster.Position.Y += float32(float64(yrel) * float64(monster.Speed))
