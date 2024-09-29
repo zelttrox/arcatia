@@ -39,3 +39,5 @@ Lancement du jeu :
 ```
 go run main.go
 ```
+-------------------------------------
+Tous les assets du jeu ont été trouvés sur [Itch.io](https://itch.io/)
