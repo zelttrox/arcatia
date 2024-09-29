@@ -1,5 +1,7 @@
 Arcatia est un petit RPG 2d créé en utilisant la bibliothèque [Raylib Go](https://github.com/gen2brain/raylib-go).
 
+[Guide du jeu](https://crawling-harmony-876.notion.site/Tutoriel-Arcatia-10e7260ac5138069812bc7a4a356a937?pvs=4)
+
 > Moteur de jeu créé par [Leo](https://github.com/comptegithubleo)
 > 
 > Créé en utilisant [VS Code](https://code.visualstudio.com/)
